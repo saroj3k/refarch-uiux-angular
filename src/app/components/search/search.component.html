@@ -1,0 +1,82 @@
+<div class="container" fxLayout="row" fxLayout.lt-md="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="space-around center">
+  <div fxFlex="8%">
+  </div>
+  <div fxFlex="8%">
+    <h4>Issue Number</h4>
+  </div>
+  <div fxFlex="8%">
+      <h4>Owner</h4>
+  </div>
+  <div fxFlex="8%">
+      <h4>Priority</h4>
+  </div>
+  <div fxFlex="8%">
+      <h4>Status</h4>
+  </div>
+  <div fxFlex="8%">
+      <h4>Description</h4>
+  </div>
+  <div fxFlex="8%">
+      <h4>Date Created</h4>
+  </div>
+  <div fxFlex="8%">
+      <h4>Last Updated</h4>
+  </div>
+  <div fxFlex="8%">
+      <h4>Closed</h4>
+  </div>
+  <div fxFlex="8%">
+      <h4>Date Closed</h4>
+  </div>
+  <div fxFlex="8%">
+      <h4>Parent Project</h4>
+  </div>
+  <div fxFlex="8%">
+  </div>
+
+</div>
+<div *ngFor="let issue of issuesList">
+<div class="container" fxLayout="row" fxLayout.lt-md="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="space-around center">
+  <div fxFlex="8%">
+    <button (click)="updateIssue(issue)" routerLink="/update">Update {{issue.title}}</button>
+  </div>
+  <div fxFlex="8%">
+    {{issue.title}}
+  </div>
+  <div fxFlex="8%">
+    {{issue.owner}}
+  </div>
+  <div fxFlex="8%">
+    {{issue.priority}}
+  </div>
+  <div fxFlex="8%">
+    {{issue.status}}
+  </div>
+  <div fxFlex="8%">
+    {{issue.description}}
+  </div>
+  <div fxFlex="8%">
+    {{issue.dateCreated}}
+  </div>
+  <div fxFlex="8%">
+    {{issue.dateLastUpdated}}
+  </div>
+  <div fxFlex="8%">
+    {{issue.closed}}
+  </div>
+  <div fxFlex="8%">
+    {{issue.dateClosed}}
+  </div>
+  <div fxFlex="8%">
+    {{issue.project}}
+  </div>
+  <div fxFlex="8%">
+    <button >Delete</button>
+  </div>
+</div>
+</div>
+<div class="container" fxLayout="row" fxLayout.lt-md="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="space-around center">
+  <div fxFlex="8%">
+    <button routerLink="/add">Add Issue</button>
+  </div>
+</div>

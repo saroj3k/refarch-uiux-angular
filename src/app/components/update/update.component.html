@@ -1,0 +1,69 @@
+<div class="container" fxLayout="row" fxLayout.lt-md="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="space-around center">
+  <div fxFlex="9%">
+    <h4>Issue Number</h4>
+  </div>
+  <div fxFlex="9%">
+      <h4>Owner</h4>
+  </div>
+  <div fxFlex="9%">
+      <h4>Priority</h4>
+  </div>
+  <div fxFlex="9%">
+      <h4>Status</h4>
+  </div>
+  <div fxFlex="9%">
+      <h4>Description</h4>
+  </div>
+  <div fxFlex="9%">
+      <h4>Date Created</h4>
+  </div>
+  <div fxFlex="9%">
+      <h4>Last Updated</h4>
+  </div>
+  <div fxFlex="9%">
+      <h4>Closed</h4>
+  </div>
+  <div fxFlex="9%">
+      <h4>Date Closed</h4>
+  </div>
+  <div fxFlex="9%">
+      <h4>Parent Project</h4>
+  </div>
+  <div fxFlex="9%">
+  </div>
+</div>
+<div class="container" fxLayout="row" fxLayout.lt-md="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="space-around center">
+  <div fxFlex="9%">
+    {{issueService.issue.title}}
+  </div>
+  <div fxFlex="9%">
+    {{issueService.issue.owner}}
+  </div>
+  <div fxFlex="9%">
+    {{issueService.issue.priority}}
+  </div>
+  <div fxFlex="9%">
+    {{issueService.issue.status}}
+  </div>
+  <div fxFlex="9%">
+    {{issueService.issue.description}}
+  </div>
+  <div fxFlex="9%">
+    {{issueService.issue.dateCreated}}
+  </div>
+  <div fxFlex="9%">
+    {{issueService.issue.dateLastUpdated}}
+  </div>
+  <div fxFlex="9%">
+    {{issueService.issue.closed}}
+  </div>
+  <div fxFlex="9%">
+    {{issueService.issue.dateClosed}}
+  </div>
+  <div fxFlex="9%">
+    {{issueService.issue.project}}
+  </div>
+  <div fxFlex="9%">
+    <button  routerLink="/search">Save</button>
+  </div>
+</div>
