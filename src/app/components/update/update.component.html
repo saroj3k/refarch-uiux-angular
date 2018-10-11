@@ -1,69 +1,85 @@
-<div class="container" fxLayout="row" fxLayout.lt-md="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="space-around center">
-  <div fxFlex="9%">
-    <h4>Issue Number</h4>
+<div class="container" fxLayout="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="space-around stretch">
+    <form class="example-form">
+  <div fxLayout="row" fxLayoutAlign="start">
+      <div fxFlex="25%">
+          <mat-form-field class="example-full-width">
+          <input matInput type="text" placeholder="ID" value="{{issueService.issue.id}}" disabled>
+        </mat-form-field>
+      </div>
   </div>
-  <div fxFlex="9%">
-      <h4>Owner</h4>
+  <div fxLayout="row" fxLayoutAlign="space-around">
+      <div fxFlex="25%">
+          <mat-form-field class="example-full-width">
+          <input matInput type="text" placeholder="Requester" value="{{issueService.issue.owner}}" disabled>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="25%">
+          <mat-form-field class="example-full-width">
+          <input matInput type="text" placeholder="Assignee" value="{{issueService.issue.owner}}" disabled>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="25%">
+          <mat-form-field class="example-full-width">
+          <input matInput type="text" placeholder="Priority" value="{{issueService.issue.priority}}" disabled>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="25%">
+          <mat-form-field class="example-full-width">
+          <input matInput type="text" placeholder="Status" value="{{issueService.issue.status}}" disabled>
+        </mat-form-field>
+      </div>
   </div>
-  <div fxFlex="9%">
-      <h4>Priority</h4>
+
+  <div fxLayout="row" fxLayoutAlign="space-around">
+
+      <div fxFlex="25%">
+          <mat-form-field class="example-full-width">
+          <input matInput type="text" placeholder="Project" value="{{issueService.issue.project}}" disabled>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="25%">
+          <mat-form-field class="example-full-width">
+          <input matInput type="text" placeholder="Date Created" value="{{issueService.issue.dateCreated}}" disabled>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="25%">
+          <mat-form-field class="example-full-width">
+          <input matInput type="text" placeholder="Last Updated" value="{{issueService.issue.dateLastUpdated}}" disabled>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="25%">
+          <mat-form-field class="example-full-width">
+          <input matInput type="text" placeholder="Date Closed" value="{{issueService.issue.dateClosed}}" disabled>
+        </mat-form-field>
+      </div>
   </div>
-  <div fxFlex="9%">
-      <h4>Status</h4>
+
+  <div fxLayout="row" fxLayoutAlign="start">
+      <mat-form-field class="example-full-width">
+          <textarea matInput type="text" placeholder="Description" value="{{issueService.issue.description}}" disabled></textarea>
+        </mat-form-field>
   </div>
-  <div fxFlex="9%">
-      <h4>Description</h4>
+</form>
+  <div fxLayout="row" fxLayoutAlign="center">
+    <h2>Messages</h2>
   </div>
-  <div fxFlex="9%">
-      <h4>Date Created</h4>
-  </div>
-  <div fxFlex="9%">
-      <h4>Last Updated</h4>
-  </div>
-  <div fxFlex="9%">
-      <h4>Closed</h4>
-  </div>
-  <div fxFlex="9%">
-      <h4>Date Closed</h4>
-  </div>
-  <div fxFlex="9%">
-      <h4>Parent Project</h4>
-  </div>
-  <div fxFlex="9%">
-  </div>
-</div>
-<div class="container" fxLayout="row" fxLayout.lt-md="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="space-around center">
-  <div fxFlex="9%">
-    {{issueService.issue.title}}
-  </div>
-  <div fxFlex="9%">
-    {{issueService.issue.owner}}
-  </div>
-  <div fxFlex="9%">
-    {{issueService.issue.priority}}
-  </div>
-  <div fxFlex="9%">
-    {{issueService.issue.status}}
-  </div>
-  <div fxFlex="9%">
-    {{issueService.issue.description}}
-  </div>
-  <div fxFlex="9%">
-    {{issueService.issue.dateCreated}}
-  </div>
-  <div fxFlex="9%">
-    {{issueService.issue.dateLastUpdated}}
-  </div>
-  <div fxFlex="9%">
-    {{issueService.issue.closed}}
-  </div>
-  <div fxFlex="9%">
-    {{issueService.issue.dateClosed}}
-  </div>
-  <div fxFlex="9%">
-    {{issueService.issue.project}}
-  </div>
-  <div fxFlex="9%">
-    <button  routerLink="/search">Save</button>
+
+  <div fxLayout="row" fxLayoutAlign="center">
+  <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            This is the title for issue
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        This is my issue
+      </mat-expansion-panel>
+    </mat-accordion>
   </div>
 </div>

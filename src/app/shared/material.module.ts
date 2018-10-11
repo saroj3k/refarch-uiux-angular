@@ -29,7 +29,10 @@ import{
   MatTreeModule,
   MatSnackBarModule,
   MatDialogModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule
 } from '@angular/material';
 
 @NgModule({
@@ -62,7 +65,10 @@ import{
     MatTreeModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   exports:[
     MatToolbarModule,
@@ -92,7 +98,10 @@ import{
     MatTreeModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
     ],
   declarations: []
 })

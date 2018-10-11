@@ -79,6 +79,32 @@
         "dateClosed": "09/16/2018",
         "project": "Accessorials",
         "id": 4
+      },
+      {
+        "title": "Issue 6",
+        "owner": "Travis",
+        "priority": "2",
+        "status": "Closed",
+        "description": "button spacing",
+        "dateCreated": "09/20/2018",
+        "dateLastUpdated": "09/15/2018",
+        "closed": true,
+        "dateClosed": "09/16/2018",
+        "project": "Accessorials",
+        "id": 4
+      },
+      {
+        "title": "Issue 7",
+        "owner": "Travis",
+        "priority": "2",
+        "status": "Closed",
+        "description": "button spacing",
+        "dateCreated": "09/20/2018",
+        "dateLastUpdated": "09/15/2018",
+        "closed": true,
+        "dateClosed": "09/16/2018",
+        "project": "Accessorials",
+        "id": 4
       }
   
   ]
