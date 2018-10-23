@@ -1,77 +1,80 @@
 <div class="container" fxLayout="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="space-around stretch">
-    <form class="example-form">
-  <div fxLayout="row" fxLayoutAlign="start">
+  <form class="example-form" [formGroup]="updateIssueForm" (ngSubmit)="onSubmit()">
+    <div fxLayout="row" fxLayoutAlign="start">
       <div fxFlex="25%">
-          <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width">
           <input matInput type="text" placeholder="ID" value="{{issueService.issue.id}}" disabled>
         </mat-form-field>
       </div>
-  </div>
-  <div fxLayout="row" fxLayoutAlign="space-around">
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-around">
       <div fxFlex="25%">
-          <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width">
           <input matInput type="text" placeholder="Requester" value="{{issueService.issue.owner}}" disabled>
         </mat-form-field>
       </div>
 
       <div fxFlex="25%">
-          <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width">
           <input matInput type="text" placeholder="Assignee" value="{{issueService.issue.owner}}" disabled>
         </mat-form-field>
       </div>
 
       <div fxFlex="25%">
-          <mat-form-field class="example-full-width">
-          <input matInput type="text" placeholder="Priority" value="{{issueService.issue.priority}}" disabled>
+        <mat-form-field class="example-full-width">
+          <input matInput type="text" placeholder="Priority" value="{{issueService.issue.priority}}">
         </mat-form-field>
       </div>
 
       <div fxFlex="25%">
-          <mat-form-field class="example-full-width">
-          <input matInput type="text" placeholder="Status" value="{{issueService.issue.status}}" disabled>
+        <mat-form-field class="example-full-width">
+          <input matInput type="text" placeholder="Status" value="{{issueService.issue.status}}">
         </mat-form-field>
       </div>
-  </div>
+    </div>
 
-  <div fxLayout="row" fxLayoutAlign="space-around">
+    <div fxLayout="row" fxLayoutAlign="space-around">
 
       <div fxFlex="25%">
-          <mat-form-field class="example-full-width">
-          <input matInput type="text" placeholder="Project" value="{{issueService.issue.project}}" disabled>
+        <mat-form-field class="example-full-width">
+          <input matInput type="text" placeholder="Project" value="{{issueService.issue.project}}">
         </mat-form-field>
       </div>
 
       <div fxFlex="25%">
-          <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width">
           <input matInput type="text" placeholder="Date Created" value="{{issueService.issue.dateCreated}}" disabled>
         </mat-form-field>
       </div>
 
       <div fxFlex="25%">
-          <mat-form-field class="example-full-width">
-          <input matInput type="text" placeholder="Last Updated" value="{{issueService.issue.dateLastUpdated}}" disabled>
+        <mat-form-field class="example-full-width">
+          <input matInput type="text" placeholder="Last Updated" value="{{issueService.issue.dateLastUpdated}}"
+            disabled>
         </mat-form-field>
       </div>
 
       <div fxFlex="25%">
-          <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width">
           <input matInput type="text" placeholder="Date Closed" value="{{issueService.issue.dateClosed}}" disabled>
         </mat-form-field>
       </div>
-  </div>
+    </div>
 
-  <div fxLayout="row" fxLayoutAlign="start">
+    <div fxLayout="row" fxLayoutAlign="start">
       <mat-form-field class="example-full-width">
-          <textarea matInput type="text" placeholder="Description" value="{{issueService.issue.description}}" disabled></textarea>
-        </mat-form-field>
-  </div>
-</form>
+        <textarea matInput type="text" formControlName="description" placeholder="Description" value="{{issueService.issue.description}}"></textarea>
+      </mat-form-field>
+    </div>
+
+    <button type="submit" mat-raised-button color="primary">Submit</button>
+  </form>
   <div fxLayout="row" fxLayoutAlign="center">
     <h2>Messages</h2>
   </div>
 
   <div fxLayout="row" fxLayoutAlign="center">
-  <mat-accordion>
+    <mat-accordion>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
