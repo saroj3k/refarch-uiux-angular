@@ -4,6 +4,8 @@ import { ProjectService } from '../../services/project.service';
 import { Project } from '../../models/project.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Issue } from '../../models/issue.model';
+import { HttpClient } from '@angular/common/http';
+import { IssueService } from 'src/app/services/issue.service';
 
 @Component({
   selector: 'app-add-issue-dialog',
@@ -23,7 +25,7 @@ export class AddIssueDialogComponent {
     priority: new FormControl('', Validators.required)
   });
 
-  constructor(public dialogRef: MatDialogRef<AddIssueDialogComponent>,
+  constructor(public dialogRef: MatDialogRef<AddIssueDialogComponent>, public issueService: IssueService,
     @Inject(MAT_DIALOG_DATA) public data: any, private projectService: ProjectService) { 
       this.getProjects();
     }
@@ -35,7 +37,12 @@ export class AddIssueDialogComponent {
     }
 
     onSubmit(){
-      console.log('Submit');
+      let newIssue: Issue = new Issue();
+      newIssue.title = this.title.value;
+      newIssue.description = this.description.value;
+      newIssue.project = this.project.value;
+      newIssue.priority = this.priority.value;
+      this.issueService.addIssue(newIssue).subscribe();
     }
 
     get title () {

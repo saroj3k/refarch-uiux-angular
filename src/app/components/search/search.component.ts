@@ -12,11 +12,10 @@ import { AddIssueDialogComponent } from '../add-issue-dialog/add-issue-dialog.co
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  issues: Observable<any>;
   dataSource = new MatTableDataSource<Issue>();
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  displayedColumns: string[] = ['title', 'owner', 'priority', 'status', 'description', 'dateCreated', 'dateLastUpdated', 'closed', 'dateClosed', 'project', 'action'];
+  displayedColumns: string[] = ['title', 'owner', 'priority', 'status', 'description', 'dateCreated', 'dateLastUpdated', 'closed', 'dateClosed', 'project', 'updateAction', 'deleteAction'];
   constructor(public http: HttpClient, private issueService: IssueService, private dialog: MatDialog) {
     
   }
@@ -26,8 +25,8 @@ export class SearchComponent implements OnInit {
   }
 
   getIssues(){
-    this.issues = this.http.get('http://localhost:3000/issues');
-    this.issues.subscribe(result => {
+     this.issueService.issues = this.issueService.getIssues();
+     this.issueService.issues.subscribe(result => {
       this.dataSource = new MatTableDataSource<Issue>(result);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -38,13 +37,10 @@ applyFilter(filterValue: string) {
   this.dataSource.filter = filterValue.trim().toLowerCase();
 }
 
-  addIssue(){
-    let tempIssue = new Issue;
-    tempIssue.title = 'temp title';
-    tempIssue.status = 'open';
-    this.http.put('http://localhost:3000/issues', tempIssue);
-    console.log('added issue');
-    this.getIssues();
+  
+
+  deleteIssue(localIssue: Issue){
+    this.issueService.deleteIssue(localIssue.id).subscribe(() => this.getIssues());
   }
 
   updateIssue(localIssue){
