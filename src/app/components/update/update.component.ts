@@ -3,6 +3,7 @@ import { IssueService } from "../../services/issue.service";
 import { Issue } from "../../models/issue.model";
 import { Router } from "@angular/router";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import * as moment from "moment";
 
 @Component({
   selector: "app-update",
@@ -20,7 +21,8 @@ export class UpdateComponent implements OnInit {
   }
 
   updateIssueForm = new FormGroup({
-    description: new FormControl("", Validators.required)
+    description: new FormControl("", Validators.required),
+    status: new FormControl("", Validators.required)
   });
 
   ngOnInit() {}
@@ -28,6 +30,10 @@ export class UpdateComponent implements OnInit {
   onSubmit() {
     let updatedIssue = this.currentIssue;
     updatedIssue.description = this.updateIssueForm.get("description").value;
+    updatedIssue.status = this.updateIssueForm.get("status").value;
+    updatedIssue.dateLastUpdated = moment()
+      .format("MM/DD/YYYY")
+      .toString();
 
     this.issueService.updateIssue(updatedIssue).subscribe(() => {
       this.router.navigate(["search"]);
