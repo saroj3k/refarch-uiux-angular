@@ -4,10 +4,10 @@ export class Issue {
   priority: number;
   status: string;
   description: string;
-  dateCreated: Date;
+  dateCreated: string;
   dateLastUpdated: string;
   closed: boolean;
-  dateClosed: Date;
+  dateClosed: string;
   project: string;
   id: number;
 }

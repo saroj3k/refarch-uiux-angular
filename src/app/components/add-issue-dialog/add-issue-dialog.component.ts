@@ -5,6 +5,7 @@ import { Project } from '../../models/project.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Issue } from '../../models/issue.model';
 import { IssueService } from 'src/app/services/issue.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-add-issue-dialog',
@@ -44,6 +45,13 @@ export class AddIssueDialogComponent {
     newIssue.description = this.description.value;
     newIssue.project = this.project.value;
     newIssue.priority = this.priority.value;
+
+    const currentDate = moment()
+      .format('MM/DD/YYYY')
+      .toString();
+    newIssue.dateCreated = currentDate;
+    newIssue.dateLastUpdated = currentDate;
+
     this.issueService.addIssue(newIssue).subscribe(() => {
       this.dialogRef.close();
 
