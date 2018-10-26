@@ -58,7 +58,7 @@
     <ng-container matColumnDef="updateAction">
       <th mat-header-cell *matHeaderCellDef>Update</th>
       <td mat-cell *matCellDef="let issue">
-        <button mat-icon-button (click)="updateIssue(issue)" routerLink="/update">
+        <button mat-icon-button (click)="onUpdateClick(issue)" routerLink="/update">
           <i class="fa fa-edit fa-2x"></i>
         </button>
       </td>

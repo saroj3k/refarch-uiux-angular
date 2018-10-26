@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { IssueService } from '../../services/issue.service';
-import { Issue } from '../../models/issue.model';
-import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import * as moment from 'moment';
+import { Router } from '@angular/router';
 import * as _ from 'lodash';
+import * as moment from 'moment';
+import { Issue } from '../../models/issue.model';
+import { IssueService } from '../../services/issue.service';
 
 @Component({
   selector: 'app-update',
@@ -13,15 +13,15 @@ import * as _ from 'lodash';
 })
 export class UpdateComponent implements OnInit {
   private currentIssue: Issue;
+  private updateIssueForm;
+
   constructor(private issueService: IssueService, private router: Router) {
-    if (issueService.issue == undefined) {
+    if (!issueService.issue) {
       router.navigate(['search']);
     } else {
       this.currentIssue = issueService.issue;
     }
   }
-
-  private updateIssueForm;
 
   ngOnInit() {
     this.updateIssueForm = new FormGroup({

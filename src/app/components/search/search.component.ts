@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Issue } from '../../models/issue.model';
-import { IssueService } from '../../services/issue.service';
 import {
   MatTableDataSource,
   MatPaginator,
@@ -9,6 +7,8 @@ import {
   MatDialog
 } from '@angular/material';
 import { AddIssueDialogComponent } from '../add-issue-dialog/add-issue-dialog.component';
+import { Issue } from '../../models/issue.model';
+import { IssueService } from '../../services/issue.service';
 
 @Component({
   selector: 'app-search',
@@ -66,7 +66,7 @@ export class SearchComponent implements OnInit {
       .subscribe(() => this.getIssues());
   }
 
-  updateIssue(localIssue) {
+  onUpdateClick(localIssue) {
     this.issueService.issue = localIssue;
   }
 

@@ -27,8 +27,8 @@
 
     <mat-form-field class="example-full-width">
       <mat-select placeholder="Priority" formControlName="priority" required>
-        <mat-option *ngFor="let priority of priorities" [value]="priority.value">
-          {{priority.text}}
+        <mat-option *ngFor="let priority of priorities" [value]="priority">
+          {{priority}}
         </mat-option>
       </mat-select>
       <mat-error *ngIf="priority.hasError('required')">Priority is required</mat-error>

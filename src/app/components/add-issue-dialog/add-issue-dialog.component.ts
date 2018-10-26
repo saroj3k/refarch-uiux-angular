@@ -1,11 +1,11 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import * as moment from 'moment';
 import { ProjectService } from '../../services/project.service';
 import { Project } from '../../models/project.model';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Issue } from '../../models/issue.model';
-import { IssueService } from 'src/app/services/issue.service';
-import * as moment from 'moment';
+import { IssueService } from '../../services/issue.service';
 
 @Component({
   selector: 'app-add-issue-dialog',
