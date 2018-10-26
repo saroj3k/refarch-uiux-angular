@@ -9,14 +9,14 @@
 
     <!-- Position Column -->
     <ng-container matColumnDef="title">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Issue Number </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
       <td mat-cell *matCellDef="let issue"> {{issue.title}} </td>
     </ng-container>
 
     <!-- Name Column -->
-    <ng-container matColumnDef="owner">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Owner </th>
-      <td mat-cell *matCellDef="let issue"> {{issue.owner}} </td>
+    <ng-container matColumnDef="assignee">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Assignee </th>
+      <td mat-cell *matCellDef="let issue"> {{issue.assignee}} </td>
     </ng-container>
 
     <!-- Weight Column -->
@@ -47,18 +47,6 @@
     <ng-container matColumnDef="dateLastUpdated">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Date Last Updated </th>
       <td mat-cell *matCellDef="let issue"> {{issue.dateLastUpdated}} </td>
-    </ng-container>
-
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="closed">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Closed </th>
-      <td mat-cell *matCellDef="let issue"> {{issue.closed}} </td>
-    </ng-container>
-
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="dateClosed">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Date Closed </th>
-      <td mat-cell *matCellDef="let issue"> {{issue.dateClosed}} </td>
     </ng-container>
 
     <!-- Symbol Column -->

@@ -5,7 +5,7 @@
 </div>
 <div fxLayout="column column" fxLayoutGap="10px" fxLayoutAlign="center center">
   <h2 mat-dialog-title>ADD ISSUE</h2>
-  <form [formGroup]="addIssueForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="addIssueForm" (ngSubmit)="addIssueForm.valid && onSubmit()">
     <mat-form-field class="example-full-width">
       <input matInput placeholder="Title" formControlName="title" required>
       <mat-error *ngIf="title.hasError('required')">Title is required</mat-error>
@@ -27,8 +27,8 @@
 
     <mat-form-field class="example-full-width">
       <mat-select placeholder="Priority" formControlName="priority" required>
-        <mat-option *ngFor="let priority of priorities" [value]="priority">
-          {{priority}}
+        <mat-option *ngFor="let priority of priorities" [value]="priority.value">
+          {{priority.text}}
         </mat-option>
       </mat-select>
       <mat-error *ngIf="priority.hasError('required')">Priority is required</mat-error>

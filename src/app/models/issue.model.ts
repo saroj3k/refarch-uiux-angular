@@ -1,7 +1,10 @@
 export class Issue {
   title: string;
-  owner: string;
-  priority: number;
+  assignee: string;
+  priority: {
+    value: number;
+    text: string;
+  };
   status: string;
   description: string;
   dateCreated: string;

@@ -14,7 +14,7 @@ import * as moment from 'moment';
 })
 export class AddIssueDialogComponent {
   projects: Project[] = [];
-  priorities: string[] = ['Nice to have', 'Must have', 'Production'];
+  priorities: string[] = ['P0', 'P1', 'P2', 'P3', 'P4'];
   issue: Issue = new Issue();
 
   addIssueForm = new FormGroup({
@@ -45,6 +45,8 @@ export class AddIssueDialogComponent {
     newIssue.description = this.description.value;
     newIssue.project = this.project.value;
     newIssue.priority = this.priority.value;
+    newIssue.assignee = '<Unassigned>';
+    newIssue.status = 'New';
 
     const currentDate = moment()
       .format('MM/DD/YYYY')

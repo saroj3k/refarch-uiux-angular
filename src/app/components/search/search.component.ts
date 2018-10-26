@@ -23,14 +23,12 @@ export class SearchComponent implements OnInit {
   sort: MatSort;
   displayedColumns: string[] = [
     'title',
-    'owner',
+    'assignee',
     'priority',
     'status',
     'description',
     'dateCreated',
     'dateLastUpdated',
-    'closed',
-    'dateClosed',
     'project',
     'updateAction',
     'deleteAction'
