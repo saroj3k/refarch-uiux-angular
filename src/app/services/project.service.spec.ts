@@ -25,6 +25,10 @@ describe('ProjectService', () => {
     httpMock.verify();
   });
 
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+
   describe('#getProjects', () => {
     it('should return an Observable<Project[]>', () => {
       const dummyProjects = [
