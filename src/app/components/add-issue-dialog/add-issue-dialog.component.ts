@@ -13,7 +13,7 @@ import { IssueService } from '../../services/issue.service';
   styleUrls: ['./add-issue-dialog.component.css']
 })
 export class AddIssueDialogComponent {
-  projects: Project[] = [];
+  projects: Project[];
   priorities: string[] = ['P0', 'P1', 'P2', 'P3', 'P4'];
   issue: Issue = new Issue();
 
@@ -34,8 +34,8 @@ export class AddIssueDialogComponent {
   }
 
   getProjects() {
-    this.projectService.projects.subscribe(results => {
-      this.projects = results;
+    this.projectService.getProjects().subscribe(projects => {
+      this.projects = projects;
     });
   }
 
