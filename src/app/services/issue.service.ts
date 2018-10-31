@@ -1,12 +1,11 @@
-import { Injectable } from '@angular/core';
-import { Issue } from '../models/issue.model';
-import { AddIssueDialogComponent } from '../components/add-issue-dialog/add-issue-dialog.component';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
-import { AuthService } from '../components/auth/auth.service';
+import { Injectable } from "@angular/core";
+import { Issue } from "../models/issue.model";
+import { HttpClient } from "@angular/common/http";
+import { Observable, Subject } from "rxjs";
+import { AuthService } from "../components/auth/auth.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class IssueService {
   issue: Issue;
@@ -20,7 +19,7 @@ export class IssueService {
   issueAdded$ = this.issueAddedSource.asObservable();
 
   addIssue(issue: Issue) {
-    return this.http.post<Issue>('http://localhost:3000/issues', issue);
+    return this.http.post<Issue>("http://localhost:3000/issues", issue);
   }
 
   confirmIssueAdded() {
@@ -28,19 +27,23 @@ export class IssueService {
   }
 
   getIssues() {
-    return this.http.get('http://localhost:3000/issues', {
-      headers: {'authorization': 'Bearer ' + this.authService.getToken()}
+    return this.http.get<Issue[]>("http://localhost:3000/issues", {
+      headers: { authorization: "Bearer " + this.authService.getToken() }
     });
+  }
+
+  getSingle<T>(id: number) {
+    return this.http.get<T>("http://localhost:3000/issues/" + id);
   }
 
   updateIssue(updatedIssue: Issue) {
     return this.http.patch<Issue>(
-      'http://localhost:3000/issues/' + updatedIssue.id,
+      "http://localhost:3000/issues/" + updatedIssue.id,
       updatedIssue
     );
   }
 
   deleteIssue(issueId) {
-    return this.http.delete<Issue>('http://localhost:3000/issues/' + issueId);
+    return this.http.delete("http://localhost:3000/issues/" + issueId);
   }
 }
