@@ -9,6 +9,11 @@ import { IssueService } from "../services/issue.service";
 import { AddIssueDialogComponent } from './add-issue-dialog/add-issue-dialog.component';
 import { ProjectService } from "../services/project.service";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { SignupComponent } from './auth/signup/signup.component';
+import { LoginComponent } from './auth/login/login.component';
+import { LogoutComponent } from './auth/logout/logout.component';
+import { AuthService } from "./auth/auth.service";
+import { AuthGuard } from "./auth/auth-guard.service";
 
 @NgModule({
     imports: [
@@ -23,7 +28,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
    entryComponents:[
     AddIssueDialogComponent
   ],
-   declarations: [SearchComponent, UpdateComponent, AddIssueDialogComponent],
-   providers:[IssueService, ProjectService]
+   declarations: [SearchComponent, UpdateComponent, AddIssueDialogComponent, SignupComponent, LoginComponent, LogoutComponent],
+   providers:[IssueService, ProjectService, AuthService, AuthGuard]
     })
 export class ComponentsModule{}

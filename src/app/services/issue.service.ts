@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Issue } from '../models/issue.model';
 import { AddIssueDialogComponent } from '../components/add-issue-dialog/add-issue-dialog.component';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
+import { AuthService } from '../components/auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { Observable, Subject } from 'rxjs';
 export class IssueService {
   issue: Issue;
   issues: Observable<any>;
-  constructor(public http: HttpClient) {}
+  constructor(public http: HttpClient, public authService: AuthService) {}
 
   // Observable source
   private issueAddedSource = new Subject<any>();
@@ -27,7 +28,9 @@ export class IssueService {
   }
 
   getIssues() {
-    return this.http.get('http://localhost:3000/issues');
+    return this.http.get('http://localhost:3000/issues', {
+      headers: {'authorization': 'Bearer ' + this.authService.getToken()}
+    });
   }
 
   updateIssue(updatedIssue: Issue) {
