@@ -28,4 +28,28 @@ describe('IssueService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  describe('#getIssues', () => {
+    it('should return all issues', () => {
+      const dummyIssues = [
+        {
+          title: 'Broken modal',
+          id: 1
+        },
+        {
+          title: 'Wrong color',
+          id: 2
+        }
+      ];
+
+      service.getIssues().subscribe((issues: any) => {
+        expect(issues.length).toBe(2);
+        expect(issues).toEqual(dummyIssues);
+      });
+
+      const req = httpMock.expectOne('http://localhost:3000/issues');
+      expect(req.request.method).toBe('GET');
+      req.flush(dummyIssues);
+    });
+  });
 });

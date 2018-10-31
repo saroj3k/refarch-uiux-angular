@@ -26,7 +26,11 @@ export class IssueService {
   }
 
   getIssues() {
-    return this.http.get('http://localhost:3000/issues');
+    return this.http.get<Issue[]>('http://localhost:3000/issues');
+  }
+
+  getSingle<T>(id: number) {
+    return this.http.get<T>('http://localhost:3000/issues/' + id);
   }
 
   updateIssue(updatedIssue: Issue) {
@@ -37,6 +41,6 @@ export class IssueService {
   }
 
   deleteIssue(issueId) {
-    return this.http.delete<Issue>('http://localhost:3000/issues/' + issueId);
+    return this.http.delete('http://localhost:3000/issues/' + issueId);
   }
 }
