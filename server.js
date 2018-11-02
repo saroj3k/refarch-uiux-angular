@@ -22,15 +22,6 @@ function createToken(payload) {
 
 // Verify the token
 function verifyToken(token) {
-  console.log("inside verify token");
-  console.log("token", token);
-  console.log(
-    jwt.verify(
-      token,
-      SECRET_KEY,
-      (err, decode) => (decode !== undefined ? decode : err)
-    )
-  );
   return jwt.verify(
     token,
     SECRET_KEY,
@@ -48,31 +39,25 @@ function isAuthenticated({ email, password }) {
 }
 
 server.post("/auth/login", (req, res) => {
-  console.log("logging in");
   const { email, password } = req.body;
   if (isAuthenticated({ email, password }) === false) {
     const status = 401;
     const message = "Incorrect email or password";
-    console.log("not logged in");
     res.status(status).json({ status, message });
     return;
   }
   const access_token = createToken({ email, password });
   res.status(200).json({ access_token });
-  console.log("logged in " + access_token);
 });
 
 server.use(/^(?!\/auth).*$/, (req, res, next) => {
-  console.log("auth header", req.headers.authorization.split(" ")[1]);
   if (req.headers.authorization.split(" ")[1] === undefined) {
     const status = 401;
     const message = "Error in authorization format";
-    console.log("not working in use");
     res.status(status).json({ status, message });
     return;
   } else {
     try {
-      console.log("about to verify token");
       verifyToken(req.headers.authorization.split(" ")[1]);
       next();
     } catch (err) {
