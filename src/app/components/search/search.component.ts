@@ -1,19 +1,20 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 import {
   MatTableDataSource,
   MatPaginator,
   MatSort,
   MatDialog
-} from '@angular/material';
-import { AddIssueDialogComponent } from '../add-issue-dialog/add-issue-dialog.component';
-import { Issue } from '../../models/issue.model';
-import { IssueService } from '../../services/issue.service';
+} from "@angular/material";
+import { AddIssueDialogComponent } from "../add-issue-dialog/add-issue-dialog.component";
+import { Issue } from "../../models/issue.model";
+import { IssueService } from "../../services/issue.service";
+import { AuthService } from "../auth/auth.service";
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  selector: "app-search",
+  templateUrl: "./search.component.html",
+  styleUrls: ["./search.component.css"]
 })
 export class SearchComponent implements OnInit {
   dataSource = new MatTableDataSource<Issue>();
@@ -22,21 +23,22 @@ export class SearchComponent implements OnInit {
   @ViewChild(MatSort)
   sort: MatSort;
   displayedColumns: string[] = [
-    'title',
-    'assignee',
-    'priority',
-    'status',
-    'description',
-    'dateCreated',
-    'dateLastUpdated',
-    'project',
-    'updateAction',
-    'deleteAction'
+    "title",
+    "assignee",
+    "priority",
+    "status",
+    "description",
+    "dateCreated",
+    "dateLastUpdated",
+    "project",
+    "updateAction",
+    "deleteAction"
   ];
   constructor(
     public http: HttpClient,
     private issueService: IssueService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private authService: AuthService
   ) {
     issueService.issueAdded$.subscribe(() => {
       this.getIssues();
@@ -73,7 +75,7 @@ export class SearchComponent implements OnInit {
   openAddIssueDialog() {
     this.dialog.open(AddIssueDialogComponent, {
       disableClose: true,
-      width: '300px'
+      width: "300px"
     });
   }
 }

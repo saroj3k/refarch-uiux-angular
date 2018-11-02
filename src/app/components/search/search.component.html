@@ -1,4 +1,5 @@
 <div class="search">
+  <button mat-raised-button color="primary" (click)="authService.logout()">Log Out</button>
   <mat-form-field>
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
   </mat-form-field>

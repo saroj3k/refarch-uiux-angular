@@ -1,36 +1,35 @@
-import { Component } from '@angular/core';
-import { HeaderService, Page} from 'od-internal-header';
-import { AuthService } from './components/auth/auth.service';
+import { Component } from "@angular/core";
+import { HeaderService, Page } from "od-internal-header";
+import { AuthService } from "./components/auth/auth.service";
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  title = 'app';
-  constructor(public headerService : HeaderService, public authService: AuthService){
+  title = "app";
+  constructor(
+    public headerService: HeaderService,
+    public authService: AuthService
+  ) {
     const search = new Page();
-    search.title = 'Issue Tracker';
-    search.routerLink = 'search';
+    search.title = "Issue Tracker";
+    search.routerLink = "search";
     const login = new Page();
-    login.title = 'Login';
-    login.routerLink = 'login';
+    login.title = "Login";
+    login.routerLink = "login";
     const signup = new Page();
-    signup.title = 'Sign Up';
-    signup.routerLink = 'signup';
-    const logout = new Page();
-    logout.title = 'Logout';
-    logout.routerLink = 'logout';
+    signup.title = "Sign Up";
+    signup.routerLink = "signup";
     headerService.pageList.push(search);
     headerService.pageList.push(login);
-    headerService.pageList.push(logout);
     headerService.pageList.push(signup);
-    headerService.applicationGroupTitle = 'Group Title';
+    headerService.applicationGroupTitle = "Group Title";
   }
-  onLogin(){
+  onLogin() {
     //this.authService.login();
   }
-  onLogout(){
+  onLogout() {
     this.authService.logout();
   }
 }
