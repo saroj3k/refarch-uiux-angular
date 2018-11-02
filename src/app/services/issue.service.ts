@@ -27,9 +27,7 @@ export class IssueService {
   }
 
   getIssues() {
-    return this.http.get<Issue[]>("http://localhost:3000/issues", {
-      headers: { authorization: "Bearer " + this.authService.getToken() }
-    });
+    return this.http.get<Issue[]>("http://localhost:3000/issues");
   }
 
   getSingle<T>(id: number) {
