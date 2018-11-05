@@ -4,6 +4,7 @@ import {
   HttpTestingController
 } from '@angular/common/http/testing';
 import { IssueService } from './issue.service';
+import { Issue } from '../models/issue.model';
 
 describe('IssueService', () => {
   let injector: TestBed;
@@ -50,6 +51,22 @@ describe('IssueService', () => {
       const req = httpMock.expectOne('http://localhost:3000/issues');
       expect(req.request.method).toBe('GET');
       req.flush(dummyIssues);
+    });
+  });
+
+  describe('#addIssue', () => {
+    it('should call add issue', () => {
+      let newIssue = new Issue();
+      newIssue.assignee = '<unassigned';
+      newIssue.title = 'New issue';
+
+      service.addIssue(newIssue).subscribe(issue => {
+        expect(issue).toEqual(newIssue);
+      });
+
+      const req = httpMock.expectOne('http://localhost:3000/issues');
+      expect(req.request.method).toBe('POST');
+      req.flush(newIssue);
     });
   });
 
