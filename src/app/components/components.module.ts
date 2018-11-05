@@ -11,7 +11,6 @@ import { ProjectService } from "../services/project.service";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SignupComponent } from "./auth/signup/signup.component";
 import { LoginComponent } from "./auth/login/login.component";
-import { LogoutComponent } from "./auth/logout/logout.component";
 import { AuthService } from "./auth/auth.service";
 import { AuthGuard } from "./auth/auth-guard.service";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
@@ -33,8 +32,7 @@ import { AuthInterceptor } from "./auth/auth.interceptor";
     UpdateComponent,
     AddIssueDialogComponent,
     SignupComponent,
-    LoginComponent,
-    LogoutComponent
+    LoginComponent
   ],
   providers: [
     IssueService,

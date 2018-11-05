@@ -2,6 +2,11 @@
   <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div fxLayout="row" fxLayoutAlign="space-around">
       <div fxFlex="10%">
+        <h1>Login</h1>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-around">
+      <div fxFlex="10%">
         <mat-form-field class="example-full-width">
           <input matInput type="text" formControlName="email" placeholder="Email">
         </mat-form-field>
