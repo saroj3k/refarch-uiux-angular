@@ -1,10 +1,20 @@
 # IssueTracker
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
+An Issue Tracking app that demonstrates basic Angular project architecture and concepts.
+
+## Setup
+
+`$ git clone git@git.corp.odfl.com:refarch-uiux/angular.git`
+
+`$ cd angular`
+
+`$ npm install`
+
+`$ npm install concurrency -g`
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm run dev` for a dev server. This will start the JSON server, authentication server, and serve the application. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
