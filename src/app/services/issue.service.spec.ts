@@ -52,4 +52,13 @@ describe('IssueService', () => {
       req.flush(dummyIssues);
     });
   });
+
+  describe('#deleteIssue', () => {
+    it('should call delete issue', () => {
+      service.deleteIssue(1).subscribe();
+
+      const req = httpMock.expectOne('http://localhost:3000/issues/1');
+      expect(req.request.method).toBe('DELETE');
+    });
+  });
 });

@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "json": "json-server --watch db.json",
-    "dev": "concurrently \"npm run start\" \"npm run json\""
+    "dev": "concurrently \"npm run start\" \"npm run json\" \"node server.js\""
   },
   "private": true,
   "dependencies": {
