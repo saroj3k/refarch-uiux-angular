@@ -29,10 +29,6 @@ export class IssueService {
     return this.http.get<Issue[]>('http://localhost:3000/issues');
   }
 
-  getSingle<T>(id: number) {
-    return this.http.get<T>('http://localhost:3000/issues/' + id);
-  }
-
   updateIssue(updatedIssue: Issue) {
     return this.http.patch<Issue>(
       'http://localhost:3000/issues/' + updatedIssue.id,
