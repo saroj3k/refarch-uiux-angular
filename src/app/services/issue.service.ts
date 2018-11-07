@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 import { Issue } from "../models/issue.model";
 import { HttpClient } from "@angular/common/http";
 import { Observable, Subject } from "rxjs";
-import { AuthService } from "../components/auth/auth.service";
 
 @Injectable({
   providedIn: "root"
@@ -10,7 +9,7 @@ import { AuthService } from "../components/auth/auth.service";
 export class IssueService {
   issue: Issue;
   issues: Observable<any>;
-  constructor(public http: HttpClient, public authService: AuthService) {}
+  constructor(public http: HttpClient) {}
 
   // Observable source
   private issueAddedSource = new Subject<any>();

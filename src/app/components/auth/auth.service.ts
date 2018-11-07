@@ -10,7 +10,8 @@ import { Router } from "@angular/router";
 })
 export class AuthService {
   loggedIn = false;
-  public token;
+  private token;
+  private role;
   constructor(public http: HttpClient, private router: Router) {}
   isAuthenticated() {
     const promise = new Promise((resolve, reject) => {
@@ -26,9 +27,9 @@ export class AuthService {
       .post("http://localhost:3000/auth/login", httpParams)
       .subscribe((response: any) => {
         this.token = response.access_token;
+        this.role = response.role;
         this.loggedIn = true;
       });
-    console.log(this.token);
   }
   logout() {
     this.token = "";
@@ -37,5 +38,8 @@ export class AuthService {
   }
   getToken() {
     return this.token;
+  }
+  getrole() {
+    return this.role;
   }
 }

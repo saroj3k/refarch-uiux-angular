@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 const server = jsonServer.create();
 const router = jsonServer.router("./db.json");
 const userdb = JSON.parse(fs.readFileSync("./users.json", "UTF-8"));
-
+let role = "";
 //server.use(bodyParser.urlencoded({extended: true}))
 server.use(bodyParser.json());
 server.use(jsonServer.defaults());
@@ -31,11 +31,14 @@ function verifyToken(token) {
 
 // Check if the user exists in database
 function isAuthenticated({ email, password }) {
-  return (
-    userdb.users.findIndex(
-      user => user.email === email && user.password === password
-    ) !== -1
+  let userIndex = userdb.users.findIndex(
+    user => user.email === email && user.password === password
   );
+  console.log("authAnswer = ", userIndex);
+  if (userIndex !== -1) {
+    role = userdb.users[userIndex].role;
+    return true;
+  } else return false;
 }
 
 server.post("/auth/login", (req, res) => {
@@ -47,7 +50,7 @@ server.post("/auth/login", (req, res) => {
     return;
   }
   const access_token = createToken({ email, password });
-  res.status(200).json({ access_token });
+  res.status(200).json({ access_token, role });
 });
 
 server.use(/^(?!\/auth).*$/, (req, res, next) => {

@@ -30,10 +30,9 @@ export class SearchComponent implements OnInit {
     "description",
     "dateCreated",
     "dateLastUpdated",
-    "project",
-    "updateAction",
-    "deleteAction"
+    "project"
   ];
+
   constructor(
     public http: HttpClient,
     private issueService: IssueService,
@@ -43,6 +42,12 @@ export class SearchComponent implements OnInit {
     issueService.issueAdded$.subscribe(() => {
       this.getIssues();
     });
+    if (this.authService.getrole() === "admin") {
+      this.displayedColumns.push("updateAction", "deleteAction");
+    }
+    if (this.authService.getrole() === "user") {
+      this.displayedColumns.push("viewAction");
+    }
   }
 
   ngOnInit() {
