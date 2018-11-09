@@ -3,6 +3,9 @@ import { HttpRequest, HttpResponse } from '@angular/common/http';
 import { Cache } from './cache';
 import { CacheEntry, MAX_CACHE_AGE } from './cache-entry';
 
+/**
+ * A map for storing and retrieving cached data.
+ */
 @Injectable()
 export class CacheMapService implements Cache {
   cacheMap = new Map<string, CacheEntry>();

@@ -11,6 +11,10 @@ import { CacheMapService } from '../services/cache-map.service';
 
 const CACHABLE_URL = '/projects';
 
+/**
+ * Intercepts HTTP requests, and either handles the request normally
+ * or returns the cached data if it exists.
+ */
 @Injectable()
 export class CachingInterceptor implements HttpInterceptor {
   constructor(private cache: CacheMapService) {}
