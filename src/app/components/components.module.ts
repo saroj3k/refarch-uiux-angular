@@ -18,6 +18,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { CachingInterceptor } from '../http-interceptors/caching-interceptor';
 import { ProjectRepository } from '../repository/project.repository';
 import { RestDataSource } from '../datasource/rest.datasource';
+import { StaticDataSource } from '../datasource/static.datasource';
 
 @NgModule({
   imports: [
@@ -44,6 +45,7 @@ import { RestDataSource } from '../datasource/rest.datasource';
     AuthGuard,
     ProjectRepository,
     RestDataSource,
+    StaticDataSource,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: CachingInterceptor, multi: true }
   ]
