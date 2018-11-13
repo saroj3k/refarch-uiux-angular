@@ -1,108 +1,195 @@
-<div class="container" fxLayout="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="space-around stretch">
-  <form class="example-form" [formGroup]="updateIssueForm" (ngSubmit)="onSubmit()">
+<div
+  class="container"
+  fxLayout="column"
+  fxLayoutWrap
+  fxLayoutGap="10px"
+  fxLayoutAlign="space-around stretch"
+>
+  <form
+    class="example-form"
+    [formGroup]="updateIssueForm"
+    (ngSubmit)="onSubmit()"
+  >
     <div fxLayout="row" fxLayoutAlign="space-around">
-
       <div fxFlex="25%">
         <mat-form-field class="example-full-width">
-          <input readOnly matInput type="text" formControlName="title" placeholder="Title" value="{{issueService.issue.title}}">
+          <input
+            readonly
+            matInput
+            type="text"
+            formControlName="title"
+            placeholder="Title"
+            value="{{issueRepo.issue.title}}"
+          />
         </mat-form-field>
       </div>
 
       <div fxFlex="25%">
         <mat-form-field class="example-full-width">
-          <input matInput type="text" placeholder="Issue ID" value="{{issueService.issue.id}}" readOnly>
+          <input
+            matInput
+            type="text"
+            placeholder="Issue ID"
+            value="{{issueRepo.issue.id}}"
+            readonly
+          />
         </mat-form-field>
       </div>
 
       <div fxFlex="25%">
         <mat-form-field class="example-full-width">
-          <input matInput type="text" placeholder="Date Created" value="{{issueService.issue.dateCreated}}" readOnly>
+          <input
+            matInput
+            type="text"
+            placeholder="Date Created"
+            value="{{issueRepo.issue.dateCreated}}"
+            readonly
+          />
         </mat-form-field>
       </div>
 
       <div fxFlex="25%">
         <mat-form-field class="example-full-width">
-          <input matInput type="text" placeholder="Last Updated" value="{{issueService.issue.dateLastUpdated}}"
-            readOnly>
+          <input
+            matInput
+            type="text"
+            placeholder="Last Updated"
+            value="{{issueRepo.issue.dateLastUpdated}}"
+            readonly
+          />
         </mat-form-field>
       </div>
     </div>
 
-
     <div fxLayout="row" fxLayoutAlign="space-around">
-
       <div fxFlex="25%">
         <mat-form-field class="example-full-width">
-          <input [readOnly]="authService.role === 'user'" matInput type="text" formControlName="assignee" placeholder="Assignee"
-            value="{{issueService.issue.assignee}}">
+          <input
+            [readOnly]="authService.role === 'user'"
+            matInput
+            type="text"
+            formControlName="assignee"
+            placeholder="Assignee"
+            value="{{issueRepo.issue.assignee}}"
+          />
         </mat-form-field>
       </div>
 
       <div fxFlex="25%">
         <mat-form-field class="example-full-width">
-          <input [readOnly]="authService.role === 'user'" matInput type="text" formControlName="priority" placeholder="Priority"
-            value="{{issueService.issue.priority}}">
+          <input
+            [readOnly]="authService.role === 'user'"
+            matInput
+            type="text"
+            formControlName="priority"
+            placeholder="Priority"
+            value="{{issueRepo.issue.priority}}"
+          />
         </mat-form-field>
       </div>
 
       <div fxFlex="25%">
         <mat-form-field class="example-full-width">
-          <input [readOnly]="authService.role === 'user'" matInput type="text" formControlName="status" placeholder="Status"
-            value="{{issueService.issue.status}}">
+          <input
+            [readOnly]="authService.role === 'user'"
+            matInput
+            type="text"
+            formControlName="status"
+            placeholder="Status"
+            value="{{issueRepo.issue.status}}"
+          />
         </mat-form-field>
       </div>
 
       <div fxFlex="25%">
         <mat-form-field class="example-full-width">
-          <input [readOnly]="authService.role === 'user'" matInput type="text" formControlName="project" placeholder="Project"
-            value="{{issueService.issue.project}}">
+          <input
+            [readOnly]="authService.role === 'user'"
+            matInput
+            type="text"
+            formControlName="project"
+            placeholder="Project"
+            value="{{issueRepo.issue.project}}"
+          />
         </mat-form-field>
       </div>
     </div>
 
     <div fxLayout="row" fxLayoutAlign="start">
-
       <div fxFlex="100%">
         <mat-form-field class="example-full-width">
-          <textarea [readOnly]="authService.role === 'user'" matInput type="text" formControlName="description"
-            placeholder="Description" value="{{issueService.issue.description}}"></textarea>
+          <textarea
+            [readOnly]="authService.role === 'user'"
+            matInput
+            type="text"
+            formControlName="description"
+            placeholder="Description"
+            value="{{issueRepo.issue.description}}"
+          ></textarea>
         </mat-form-field>
       </div>
     </div>
 
-    <div *ngIf="authService.role === 'admin'" class="container" fxLayout="row" fxLayout.lt-md="column" fxLayoutWrap
-      fxLayoutGap="10px" fxLayoutAlign="space-around center">
+    <div
+      *ngIf="authService.role === 'admin'"
+      class="container"
+      fxLayout="row"
+      fxLayout.lt-md="column"
+      fxLayoutWrap
+      fxLayoutGap="10px"
+      fxLayoutAlign="space-around center"
+    >
       <div fxFlex="8%">
         <button type="submit" mat-raised-button color="primary">Submit</button>
       </div>
     </div>
-    <div *ngIf="authService.role === 'admin'" class="container" fxLayout="row" fxLayout.lt-md="column" fxLayoutWrap
-      fxLayoutGap="10px" fxLayoutAlign="space-around center">
+    <div
+      *ngIf="authService.role === 'admin'"
+      class="container"
+      fxLayout="row"
+      fxLayout.lt-md="column"
+      fxLayoutWrap
+      fxLayoutGap="10px"
+      fxLayoutAlign="space-around center"
+    >
       <div fxFlex="8%">
-        <button routerLink="/search" mat-raised-button color="secondary">Cancel</button>
+        <button routerLink="/search" mat-raised-button color="secondary">
+          Cancel
+        </button>
       </div>
     </div>
-    <div *ngIf="authService.role === 'user'" class="container" fxLayout="row" fxLayout.lt-md="column" fxLayoutWrap
-      fxLayoutGap="10px" fxLayoutAlign="space-around center">
+    <div
+      *ngIf="authService.role === 'user'"
+      class="container"
+      fxLayout="row"
+      fxLayout.lt-md="column"
+      fxLayoutWrap
+      fxLayoutGap="10px"
+      fxLayoutAlign="space-around center"
+    >
       <div fxFlex="8%">
-        <button routerLink="/search" mat-raised-button color="primary">Back</button>
+        <button routerLink="/search" mat-raised-button color="primary">
+          Back
+        </button>
       </div>
     </div>
   </form>
-  <!-- <div fxLayout="row" fxLayoutAlign="center">
-    <h2>Messages</h2>
-  </div>
+  <!--
+    <div fxLayout="row" fxLayoutAlign="center">
+      <h2>Messages</h2>
+    </div>
 
-  <div fxLayout="row" fxLayoutAlign="center">
-    <mat-accordion>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            This is the title for issue
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        This is my issue
-      </mat-expansion-panel>
-    </mat-accordion>
-  </div> -->
+    <div fxLayout="row" fxLayoutAlign="center">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              This is the title for issue
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          This is my issue
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  -->
 </div>

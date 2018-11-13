@@ -19,6 +19,7 @@ import { CachingInterceptor } from '../http-interceptors/caching-interceptor';
 import { ProjectRepository } from '../repository/project.repository';
 import { RestDataSource } from '../datasource/rest.datasource';
 import { StaticDataSource } from '../datasource/static.datasource';
+import { IssueRepository } from '../repository/issue.repository';
 
 @NgModule({
   imports: [
@@ -46,6 +47,7 @@ import { StaticDataSource } from '../datasource/static.datasource';
     ProjectRepository,
     RestDataSource,
     StaticDataSource,
+    IssueRepository,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: CachingInterceptor, multi: true }
   ]

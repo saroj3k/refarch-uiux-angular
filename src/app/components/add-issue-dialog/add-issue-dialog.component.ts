@@ -6,6 +6,7 @@ import { Project } from '../../models/project.model';
 import { Issue } from '../../models/issue.model';
 import { IssueService } from '../../services/issue.service';
 import { ProjectRepository } from 'src/app/repository/project.repository';
+import { IssueRepository } from 'src/app/repository/issue.repository';
 
 @Component({
   selector: 'app-add-issue-dialog',
@@ -28,7 +29,8 @@ export class AddIssueDialogComponent {
     public dialogRef: MatDialogRef<AddIssueDialogComponent>,
     public issueService: IssueService,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private projectRepo: ProjectRepository
+    private projectRepo: ProjectRepository,
+    private issueRepo: IssueRepository
   ) {
     this.projectRepo.getProjects().then(resolvedProjects => {
       this.projects = resolvedProjects;
@@ -50,11 +52,9 @@ export class AddIssueDialogComponent {
     newIssue.dateCreated = currentDate;
     newIssue.dateLastUpdated = currentDate;
 
-    this.issueService.addIssue(newIssue).subscribe(() => {
+    this.issueRepo.addIssue(newIssue).then(result => {
       this.dialogRef.close();
-
-      // Send to subsriber to get latest changes
-      this.issueService.confirmIssueAdded();
+      this.issueRepo.confirmIssueAdded();
     });
   }
 

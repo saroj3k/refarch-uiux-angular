@@ -1,16 +1,17 @@
-import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
-import * as _ from "lodash";
-import * as moment from "moment";
-import { Issue } from "../../models/issue.model";
-import { IssueService } from "../../services/issue.service";
-import { AuthService } from "../auth/auth.service";
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import * as _ from 'lodash';
+import * as moment from 'moment';
+import { Issue } from '../../models/issue.model';
+import { IssueService } from '../../services/issue.service';
+import { AuthService } from '../auth/auth.service';
+import { IssueRepository } from 'src/app/repository/issue.repository';
 
 @Component({
-  selector: "app-update",
-  templateUrl: "./update.component.html",
-  styleUrls: ["./update.component.css"]
+  selector: 'app-update',
+  templateUrl: './update.component.html',
+  styleUrls: ['./update.component.css']
 })
 export class UpdateComponent implements OnInit {
   private currentIssue: Issue;
@@ -19,12 +20,13 @@ export class UpdateComponent implements OnInit {
   constructor(
     private issueService: IssueService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private issueRepo: IssueRepository
   ) {
-    if (!issueService.issue) {
-      router.navigate(["search"]);
+    if (!this.issueRepo.issue) {
+      router.navigate(['search']);
     } else {
-      this.currentIssue = issueService.issue;
+      this.currentIssue = this.issueRepo.issue;
     }
   }
 
@@ -49,13 +51,13 @@ export class UpdateComponent implements OnInit {
   }
 
   onSubmit() {
-    let updatedIssue = { ...this.currentIssue };
-    updatedIssue.title = this.updateIssueForm.get("title").value;
-    updatedIssue.assignee = this.updateIssueForm.get("assignee").value;
-    updatedIssue.priority = this.updateIssueForm.get("priority").value;
-    updatedIssue.status = this.updateIssueForm.get("status").value;
-    updatedIssue.description = this.updateIssueForm.get("description").value;
-    updatedIssue.project = this.updateIssueForm.get("project").value;
+    const updatedIssue = { ...this.currentIssue };
+    updatedIssue.title = this.updateIssueForm.get('title').value;
+    updatedIssue.assignee = this.updateIssueForm.get('assignee').value;
+    updatedIssue.priority = this.updateIssueForm.get('priority').value;
+    updatedIssue.status = this.updateIssueForm.get('status').value;
+    updatedIssue.description = this.updateIssueForm.get('description').value;
+    updatedIssue.project = this.updateIssueForm.get('project').value;
 
     // Check if changes have been made to the issue
     if (
@@ -66,14 +68,19 @@ export class UpdateComponent implements OnInit {
     ) {
       // Changes have been made; set last updated and patch
       updatedIssue.dateLastUpdated = moment()
-        .format("MM/DD/YYYY")
+        .format('MM/DD/YYYY')
         .toString();
-      this.issueService.updateIssue(updatedIssue).subscribe(() => {
-        this.router.navigate(["search"]);
+      // this.issueService.updateIssue(updatedIssue).subscribe(() => {
+      //   this.router.navigate(['search']);
+      // });
+
+      this.issueRepo.updateIssue(updatedIssue).then(result => {
+        console.log(result);
+        this.router.navigate(['search']);
       });
     } else {
       // No changes made; route back to search page
-      this.router.navigate(["search"]);
+      this.router.navigate(['search']);
     }
   }
 }
