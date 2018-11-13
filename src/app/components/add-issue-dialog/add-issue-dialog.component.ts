@@ -1,11 +1,11 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, AfterViewInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import * as moment from 'moment';
-import { ProjectService } from '../../services/project.service';
 import { Project } from '../../models/project.model';
 import { Issue } from '../../models/issue.model';
 import { IssueService } from '../../services/issue.service';
+import { ProjectRepository } from 'src/app/repository/project.repository';
 
 @Component({
   selector: 'app-add-issue-dialog',
@@ -13,9 +13,9 @@ import { IssueService } from '../../services/issue.service';
   styleUrls: ['./add-issue-dialog.component.css']
 })
 export class AddIssueDialogComponent {
-  projects: Project[];
   priorities: string[] = ['P0', 'P1', 'P2', 'P3', 'P4'];
   issue: Issue = new Issue();
+  projects: Project[];
 
   addIssueForm = new FormGroup({
     title: new FormControl('', Validators.required),
@@ -28,19 +28,15 @@ export class AddIssueDialogComponent {
     public dialogRef: MatDialogRef<AddIssueDialogComponent>,
     public issueService: IssueService,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private projectService: ProjectService
+    private projectRepo: ProjectRepository
   ) {
-    this.getProjects();
-  }
-
-  getProjects() {
-    this.projectService.getProjects().subscribe(projects => {
-      this.projects = projects;
+    this.projectRepo.getProjects().then(resolvedProjects => {
+      this.projects = resolvedProjects;
     });
   }
 
   onSubmit() {
-    let newIssue: Issue = new Issue();
+    const newIssue: Issue = new Issue();
     newIssue.title = this.title.value;
     newIssue.description = this.description.value;
     newIssue.project = this.project.value;

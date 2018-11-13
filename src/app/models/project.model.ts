@@ -1,6 +1,4 @@
-
-
-export interface Project{
-    title: string;
-    team: string;
+export interface Project {
+  title: string;
+  team: string;
 }

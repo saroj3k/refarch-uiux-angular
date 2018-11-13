@@ -16,6 +16,8 @@ import { AuthGuard } from './auth/auth-guard.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { CachingInterceptor } from '../http-interceptors/caching-interceptor';
+import { ProjectRepository } from '../repository/project.repository';
+import { RestDataSource } from '../datasource/rest.datasource';
 
 @NgModule({
   imports: [
@@ -40,6 +42,8 @@ import { CachingInterceptor } from '../http-interceptors/caching-interceptor';
     ProjectService,
     AuthService,
     AuthGuard,
+    ProjectRepository,
+    RestDataSource,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: CachingInterceptor, multi: true }
   ]
