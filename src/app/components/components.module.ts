@@ -3,23 +3,21 @@ import { MaterialModule } from '../shared/material.module';
 import { SearchComponent } from './search/search.component';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from '../app-routing/app-routing.module';
 import { UpdateComponent } from './update/update.component';
-import { IssueService } from '../services/issue.service';
 import { AddIssueDialogComponent } from './add-issue-dialog/add-issue-dialog.component';
-import { ProjectService } from '../services/project.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth-guard.service';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { CachingInterceptor } from '../http-interceptors/caching-interceptor';
-import { ProjectRepository } from '../repository/project.repository';
 import { RestDataSource } from '../datasource/rest.datasource';
 import { StaticDataSource } from '../datasource/static.datasource';
-import { IssueRepository } from '../repository/issue.repository';
+import { ProjectService } from '../services/project.service';
+import { IssueService } from '../services/issue.service';
 
 @NgModule({
   imports: [
@@ -44,10 +42,8 @@ import { IssueRepository } from '../repository/issue.repository';
     ProjectService,
     AuthService,
     AuthGuard,
-    ProjectRepository,
     RestDataSource,
     StaticDataSource,
-    IssueRepository,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: CachingInterceptor, multi: true }
   ]

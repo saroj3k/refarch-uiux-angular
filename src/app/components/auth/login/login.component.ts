@@ -1,12 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormControl, Validators, NgForm } from "@angular/forms";
-import { AuthService } from "../auth.service";
-import { Router } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: "app-login",
-  templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.css"]
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
   private loginForm;
@@ -14,15 +14,15 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = new FormGroup({
-      email: new FormControl("", Validators.required),
-      password: new FormControl("", Validators.required)
+      email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required)
     });
   }
 
   onSubmit(form: NgForm) {
-    const email = this.loginForm.get("email").value;
-    const password = this.loginForm.get("password").value;
+    const email = this.loginForm.get('email').value;
+    const password = this.loginForm.get('password').value;
     this.authService.login(email, password);
-    this.router.navigate(["search"]);
+    this.router.navigate(['search']);
   }
 }

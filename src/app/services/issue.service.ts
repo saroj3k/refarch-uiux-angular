@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Issue } from '../models/issue.model';
-import { HttpClient } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { RestDataSource } from '../datasource/rest.datasource';
+import { Subject } from 'rxjs';
+// import { StaticDataSource } from '../datasource/static.datasource';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class IssueService {
+  constructor(private dataSource: RestDataSource) {}
+
   issue: Issue;
-  issues: Observable<any>;
-  constructor(public http: HttpClient) {}
 
   // Observable source
   private issueAddedSource = new Subject<any>();
@@ -17,26 +16,39 @@ export class IssueService {
   // Observable stream
   issueAdded$ = this.issueAddedSource.asObservable();
 
-  addIssue(issue: Issue) {
-    return this.http.post<Issue>('http://localhost:3000/issues', issue);
+  getIssues(): Promise<Issue[]> {
+    return new Promise<Issue[]>(resolve => {
+      this.dataSource.getIssues().subscribe(issues => {
+        resolve(issues);
+      });
+    });
+  }
+
+  addIssue(issue: Issue): Promise<Issue> {
+    return new Promise<Issue>(resolve => {
+      this.dataSource.addIssue(issue).subscribe(data => {
+        resolve(data);
+      });
+    });
   }
 
   confirmIssueAdded() {
     this.issueAddedSource.next();
   }
 
-  getIssues() {
-    return this.http.get<Issue[]>('http://localhost:3000/issues');
-  }
-
-  updateIssue(updatedIssue: Issue) {
-    return this.http.patch<Issue>(
-      'http://localhost:3000/issues/' + updatedIssue.id,
-      updatedIssue
-    );
+  updateIssue(issue: Issue) {
+    return new Promise(resolve => {
+      this.dataSource.updateIssue(issue).subscribe(() => {
+        resolve();
+      });
+    });
   }
 
   deleteIssue(issueId) {
-    return this.http.delete('http://localhost:3000/issues/' + issueId);
+    return new Promise(resolve => {
+      this.dataSource.deleteIssue(issueId).subscribe(() => {
+        resolve();
+      });
+    });
   }
 }

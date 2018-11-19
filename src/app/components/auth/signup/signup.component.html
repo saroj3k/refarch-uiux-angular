@@ -1,27 +1,55 @@
-<div class="container" fxLayout="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="space-around stretch">
+<div
+  class="container"
+  fxLayout="column"
+  fxLayoutWrap
+  fxLayoutGap="10px"
+  fxLayoutAlign="space-around stretch"
+>
   <form class="example-form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
     <div fxLayout="row" fxLayoutAlign="space-around">
-      <div fxFlex="10%">
-        <h1>Sign Up</h1>
-      </div>
+      <div fxFlex="10%"><h1>Sign Up</h1></div>
     </div>
     <div fxLayout="row" fxLayoutAlign="space-around">
       <div fxFlex="10%">
         <mat-form-field class="example-full-width">
-          <input matInput type="text" formControlName="email" placeholder="Email">
+          <input
+            matInput
+            type="text"
+            formControlName="email"
+            placeholder="Email"
+          />
         </mat-form-field>
       </div>
     </div>
     <div fxLayout="row" fxLayoutAlign="space-around center">
       <div fxFlex="10%">
         <mat-form-field class="example-full-width">
-          <input matInput type="text" formControlName="password" placeholder="Password">
+          <input
+            matInput
+            type="text"
+            formControlName="password"
+            placeholder="Password"
+          />
         </mat-form-field>
       </div>
     </div>
-    <div class="container" fxLayout="row" fxLayout.lt-md="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="space-around center">
+    <div
+      class="container"
+      fxLayout="row"
+      fxLayout.lt-md="column"
+      fxLayoutWrap
+      fxLayoutGap="10px"
+      fxLayoutAlign="space-around center"
+    >
       <div fxFlex="4%">
-        <button [disabled]="true" type="submit" mat-raised-button color="primary">Sign Up</button>
+        <button
+          [disabled]="true"
+          type="submit"
+          mat-raised-button
+          color="primary"
+        >
+          Sign Up
+        </button>
       </div>
     </div>
   </form>

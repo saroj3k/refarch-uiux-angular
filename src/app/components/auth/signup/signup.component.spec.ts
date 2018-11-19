@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SignupComponent } from './signup.component';
 import { MaterialModule } from 'src/app/shared/material.module';
 import { ReactiveFormsModule } from '@angular/forms';

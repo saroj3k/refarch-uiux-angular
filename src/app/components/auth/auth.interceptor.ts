@@ -3,10 +3,10 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent
-} from "@angular/common/http";
-import { Observable } from "rxjs/Observable";
-import { Injectable } from "@angular/core";
-import { AuthService } from "./auth.service";
+} from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -17,8 +17,8 @@ export class AuthInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     const copiedReq = req.clone({
       headers: req.headers.set(
-        "authorization",
-        "Bearer " + this.authService.getToken()
+        'authorization',
+        'Bearer ' + this.authService.getToken()
       )
     });
     return next.handle(copiedReq);

@@ -5,8 +5,7 @@ import * as moment from 'moment';
 import { Project } from '../../models/project.model';
 import { Issue } from '../../models/issue.model';
 import { IssueService } from '../../services/issue.service';
-import { ProjectRepository } from 'src/app/repository/project.repository';
-import { IssueRepository } from 'src/app/repository/issue.repository';
+import { ProjectService } from '../../services/project.service';
 
 @Component({
   selector: 'app-add-issue-dialog',
@@ -27,12 +26,11 @@ export class AddIssueDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<AddIssueDialogComponent>,
-    public issueService: IssueService,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private projectRepo: ProjectRepository,
-    private issueRepo: IssueRepository
+    private projectService: ProjectService,
+    private issueService: IssueService
   ) {
-    this.projectRepo.getProjects().then(resolvedProjects => {
+    this.projectService.getProjects().then(resolvedProjects => {
       this.projects = resolvedProjects;
     });
   }
@@ -52,9 +50,9 @@ export class AddIssueDialogComponent {
     newIssue.dateCreated = currentDate;
     newIssue.dateLastUpdated = currentDate;
 
-    this.issueRepo.addIssue(newIssue).then(result => {
+    this.issueService.addIssue(newIssue).then(result => {
       this.dialogRef.close();
-      this.issueRepo.confirmIssueAdded();
+      this.issueService.confirmIssueAdded();
     });
   }
 

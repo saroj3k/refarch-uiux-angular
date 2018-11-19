@@ -6,7 +6,6 @@ import * as moment from 'moment';
 import { Issue } from '../../models/issue.model';
 import { IssueService } from '../../services/issue.service';
 import { AuthService } from '../auth/auth.service';
-import { IssueRepository } from 'src/app/repository/issue.repository';
 
 @Component({
   selector: 'app-update',
@@ -18,15 +17,14 @@ export class UpdateComponent implements OnInit {
   private updateIssueForm;
 
   constructor(
-    private issueService: IssueService,
     private router: Router,
     private authService: AuthService,
-    private issueRepo: IssueRepository
+    private issueService: IssueService
   ) {
-    if (!this.issueRepo.issue) {
+    if (!this.issueService.issue) {
       router.navigate(['search']);
     } else {
-      this.currentIssue = this.issueRepo.issue;
+      this.currentIssue = this.issueService.issue;
     }
   }
 
@@ -70,11 +68,8 @@ export class UpdateComponent implements OnInit {
       updatedIssue.dateLastUpdated = moment()
         .format('MM/DD/YYYY')
         .toString();
-      // this.issueService.updateIssue(updatedIssue).subscribe(() => {
-      //   this.router.navigate(['search']);
-      // });
 
-      this.issueRepo.updateIssue(updatedIssue).then(result => {
+      this.issueService.updateIssue(updatedIssue).then(result => {
         console.log(result);
         this.router.navigate(['search']);
       });

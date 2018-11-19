@@ -9,7 +9,7 @@ import {
 import { AddIssueDialogComponent } from '../add-issue-dialog/add-issue-dialog.component';
 import { Issue } from '../../models/issue.model';
 import { AuthService } from '../auth/auth.service';
-import { IssueRepository } from 'src/app/repository/issue.repository';
+import { IssueService } from '../../services/issue.service';
 
 @Component({
   selector: 'app-search',
@@ -37,9 +37,9 @@ export class SearchComponent implements OnInit {
     public http: HttpClient,
     private dialog: MatDialog,
     private authService: AuthService,
-    private issueRepo: IssueRepository
+    private issueService: IssueService
   ) {
-    this.issueRepo.issueAdded$.subscribe(() => {
+    this.issueService.issueAdded$.subscribe(() => {
       this.getIssues();
     });
     if (this.authService.getrole() === 'admin') {
@@ -55,7 +55,7 @@ export class SearchComponent implements OnInit {
   }
 
   getIssues() {
-    this.issueRepo.getIssues().then(issues => {
+    this.issueService.getIssues().then(issues => {
       this.dataSource = new MatTableDataSource<Issue>(issues);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -67,13 +67,13 @@ export class SearchComponent implements OnInit {
   }
 
   deleteIssue(localIssue: Issue) {
-    this.issueRepo.deleteIssue(localIssue.id).then(() => {
+    this.issueService.deleteIssue(localIssue.id).then(() => {
       this.getIssues();
     });
   }
 
   onUpdateClick(localIssue) {
-    this.issueRepo.issue = localIssue;
+    this.issueService.issue = localIssue;
   }
 
   openAddIssueDialog() {

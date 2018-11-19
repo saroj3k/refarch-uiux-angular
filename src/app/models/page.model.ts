@@ -1,5 +1,4 @@
-
-export class Page{
-    title: string;
-    routerLink: string;
+export class Page {
+  title: string;
+  routerLink: string;
 }

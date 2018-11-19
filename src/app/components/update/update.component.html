@@ -19,7 +19,7 @@
             type="text"
             formControlName="title"
             placeholder="Title"
-            value="{{issueRepo.issue.title}}"
+            value="{{issueService.issue.title}}"
           />
         </mat-form-field>
       </div>
@@ -30,7 +30,7 @@
             matInput
             type="text"
             placeholder="Issue ID"
-            value="{{issueRepo.issue.id}}"
+            value="{{issueService.issue.id}}"
             readonly
           />
         </mat-form-field>
@@ -42,7 +42,7 @@
             matInput
             type="text"
             placeholder="Date Created"
-            value="{{issueRepo.issue.dateCreated}}"
+            value="{{issueService.issue.dateCreated}}"
             readonly
           />
         </mat-form-field>
@@ -54,7 +54,7 @@
             matInput
             type="text"
             placeholder="Last Updated"
-            value="{{issueRepo.issue.dateLastUpdated}}"
+            value="{{issueService.issue.dateLastUpdated}}"
             readonly
           />
         </mat-form-field>
@@ -70,7 +70,7 @@
             type="text"
             formControlName="assignee"
             placeholder="Assignee"
-            value="{{issueRepo.issue.assignee}}"
+            value="{{issueService.issue.assignee}}"
           />
         </mat-form-field>
       </div>
@@ -83,7 +83,7 @@
             type="text"
             formControlName="priority"
             placeholder="Priority"
-            value="{{issueRepo.issue.priority}}"
+            value="{{issueService.issue.priority}}"
           />
         </mat-form-field>
       </div>
@@ -96,7 +96,7 @@
             type="text"
             formControlName="status"
             placeholder="Status"
-            value="{{issueRepo.issue.status}}"
+            value="{{issueService.issue.status}}"
           />
         </mat-form-field>
       </div>
@@ -109,7 +109,7 @@
             type="text"
             formControlName="project"
             placeholder="Project"
-            value="{{issueRepo.issue.project}}"
+            value="{{issueService.issue.project}}"
           />
         </mat-form-field>
       </div>
@@ -124,7 +124,7 @@
             type="text"
             formControlName="description"
             placeholder="Description"
-            value="{{issueRepo.issue.description}}"
+            value="{{issueService.issue.description}}"
           ></textarea>
         </mat-form-field>
       </div>
@@ -153,7 +153,12 @@
       fxLayoutAlign="space-around center"
     >
       <div fxFlex="8%">
-        <button routerLink="/search" mat-raised-button color="secondary">
+        <button
+          type="button"
+          routerLink="/search"
+          mat-raised-button
+          color="secondary"
+        >
           Cancel
         </button>
       </div>
@@ -168,7 +173,12 @@
       fxLayoutAlign="space-around center"
     >
       <div fxFlex="8%">
-        <button routerLink="/search" mat-raised-button color="primary">
+        <button
+          type="button"
+          routerLink="/search"
+          mat-raised-button
+          color="primary"
+        >
           Back
         </button>
       </div>

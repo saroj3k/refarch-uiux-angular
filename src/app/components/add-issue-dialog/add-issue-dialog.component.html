@@ -1,42 +1,58 @@
 <div fxLayout="row" fxLayoutAlign="end center">
-  <button mat-icon-button mat-dialog-close>
-    <mat-icon>close</mat-icon>
-  </button>
+  <button mat-icon-button mat-dialog-close><mat-icon>close</mat-icon></button>
 </div>
 <div fxLayout="column column" fxLayoutGap="10px" fxLayoutAlign="center center">
   <h2 mat-dialog-title>ADD ISSUE</h2>
-  <form [formGroup]="addIssueForm" (ngSubmit)="addIssueForm.valid && onSubmit()">
+  <form
+    [formGroup]="addIssueForm"
+    (ngSubmit)="addIssueForm.valid && onSubmit()"
+  >
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Title" formControlName="title" required>
-      <mat-error *ngIf="title.hasError('required')">Title is required</mat-error>
+      <input matInput placeholder="Title" formControlName="title" required />
+      <mat-error *ngIf="title.hasError('required')"
+        >Title is required</mat-error
+      >
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <textarea matInput placeholder="Description" formControlName="description" required></textarea>
-      <mat-error *ngIf="description.hasError('required')">Description is required</mat-error>
+      <textarea
+        matInput
+        placeholder="Description"
+        formControlName="description"
+        required
+      ></textarea>
+      <mat-error *ngIf="description.hasError('required')"
+        >Description is required</mat-error
+      >
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <mat-select placeholder="Project" formControlName="project" required>
         <mat-option *ngFor="let project of projects" [value]="project.title">
-          {{project.title}}
+          {{ project.title }}
         </mat-option>
       </mat-select>
-      <mat-error *ngIf="project.hasError('required')">Project is required</mat-error>
+      <mat-error *ngIf="project.hasError('required')"
+        >Project is required</mat-error
+      >
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <mat-select placeholder="Priority" formControlName="priority" required>
         <mat-option *ngFor="let priority of priorities" [value]="priority">
-          {{priority}}
+          {{ priority }}
         </mat-option>
       </mat-select>
-      <mat-error *ngIf="priority.hasError('required')">Priority is required</mat-error>
+      <mat-error *ngIf="priority.hasError('required')"
+        >Priority is required</mat-error
+      >
     </mat-form-field>
-    <!-- <label for="fileUpload">Attachments</label>
-    <button id="fileUpload" mat-icon-button>
-      <mat-icon>attach_file</mat-icon>
-    </button> -->
+    <!--
+      <label for="fileUpload">Attachments</label>
+      <button id="fileUpload" mat-icon-button>
+        <mat-icon>attach_file</mat-icon>
+      </button>
+    -->
     <div fxLayout="row" fxLayoutAlign="center center">
       <button type="submit" mat-raised-button color="primary">Submit</button>
     </div>

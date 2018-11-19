@@ -1,5 +1,5 @@
-export class Application{
-    title: string;
-    url: string;
-    icons: string[];
+export class Application {
+  title: string;
+  url: string;
+  icons: string[];
 }

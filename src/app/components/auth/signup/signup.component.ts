@@ -1,12 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { AuthService } from "../auth.service";
-import { Router } from "@angular/router";
-import { FormGroup, FormControl, Validators, NgForm } from "@angular/forms";
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 
 @Component({
-  selector: "app-signup",
-  templateUrl: "./signup.component.html",
-  styleUrls: ["./signup.component.css"]
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
   private signupForm;
@@ -14,8 +14,8 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     this.signupForm = new FormGroup({
-      email: new FormControl("", Validators.required),
-      password: new FormControl("", Validators.required)
+      email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required)
     });
   }
 
@@ -23,6 +23,6 @@ export class SignupComponent implements OnInit {
     // const email = this.signupForm.get("email").value;
     // const password = this.signupForm.get("password").value;
     // this.authService.login(email, password);
-    this.router.navigate(["search"]);
+    this.router.navigate(['search']);
   }
 }

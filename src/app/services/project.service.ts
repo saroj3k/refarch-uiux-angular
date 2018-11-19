@@ -1,12 +1,17 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Project } from "../models/project.model";
+import { Injectable } from '@angular/core';
+import { Project } from '../models/project.model';
+import { RestDataSource } from '../datasource/rest.datasource';
+// import { StaticDataSource } from '../datasource/static.datasource';
 
 @Injectable()
 export class ProjectService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private dataSource: RestDataSource) {}
 
-  getProjects() {
-    return this.httpClient.get<Project[]>("http://localhost:3000/projects");
+  getProjects(): Promise<Project[]> {
+    return new Promise<Project[]>(resolve => {
+      this.dataSource.getProjects().subscribe(data => {
+        resolve(data);
+      });
+    });
   }
 }
