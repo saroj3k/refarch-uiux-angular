@@ -3,12 +3,13 @@ import {
   HttpClientTestingModule,
   HttpTestingController
 } from '@angular/common/http/testing';
-import { IssueService } from './issue.service';
+
 import { Issue } from '../models/issue.model';
+import { IssueService } from './issue.service';
 
 describe('IssueService', () => {
   let injector: TestBed;
-  let service: IssueService;
+  let issueService: IssueService;
   let httpMock: HttpTestingController;
 
   beforeEach(() => {
@@ -18,7 +19,7 @@ describe('IssueService', () => {
     });
 
     injector = getTestBed();
-    service = injector.get(IssueService);
+    issueService = injector.get(IssueService);
     httpMock = injector.get(HttpTestingController);
   });
 
@@ -27,7 +28,7 @@ describe('IssueService', () => {
   });
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
+    expect(issueService).toBeTruthy();
   });
 
   describe('getIssues()', () => {
@@ -43,12 +44,12 @@ describe('IssueService', () => {
         }
       ];
 
-      service.getIssues().subscribe((issues: any) => {
+      issueService.getIssues().then((issues: any) => {
         expect(issues.length).toBe(2);
         expect(issues).toEqual(dummyIssues);
       });
 
-      // The url has to be the same as the url in the service.
+      // The url has to be the same as the url in the issueService.
       const req = httpMock.expectOne(
         'http://localhost:3000/issues',
         'call to api'
@@ -60,11 +61,11 @@ describe('IssueService', () => {
 
   describe('addIssue()', () => {
     it('should post the correct data', () => {
-      let newIssue = new Issue();
+      const newIssue = new Issue();
       newIssue.assignee = '<unassigned>';
       newIssue.title = 'New issue';
 
-      service.addIssue(newIssue).subscribe(issue => {
+      issueService.addIssue(newIssue).then(issue => {
         expect(issue).toEqual(newIssue);
       });
 
@@ -79,12 +80,12 @@ describe('IssueService', () => {
 
   describe('updateIssue()', () => {
     it('should patch the correct data', () => {
-      let updatedIssue = new Issue();
+      const updatedIssue = new Issue();
       updatedIssue.assignee = 'User';
       updatedIssue.title = 'Updated issue';
       updatedIssue.id = 1;
 
-      service.updateIssue(updatedIssue).subscribe(issue => {
+      issueService.updateIssue(updatedIssue).then(issue => {
         expect(issue).toEqual(updatedIssue);
       });
 
@@ -99,7 +100,7 @@ describe('IssueService', () => {
 
   describe('deleteIssue()', () => {
     it('should delete the correct data', () => {
-      service.deleteIssue(1).subscribe(data => {
+      issueService.deleteIssue(1).then(data => {
         expect(data).toBe(1);
       });
 

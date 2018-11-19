@@ -42,7 +42,7 @@ describe('ProjectService', () => {
         }
       ];
 
-      service.getProjects().subscribe((projects: any) => {
+      service.getProjects().then((projects: any) => {
         expect(projects.length).toBe(2);
         expect(projects).toEqual(dummyProjects);
       });
