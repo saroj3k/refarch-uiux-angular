@@ -7,6 +7,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ProjectService } from 'src/app/services/project.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RestDataSource } from 'src/app/datasource/rest.datasource';
+import { IssueService } from 'src/app/services/issue.service';
 
 describe('AddIssueDialogComponent', () => {
   let component: AddIssueDialogComponent;
@@ -23,7 +25,9 @@ describe('AddIssueDialogComponent', () => {
       ],
       declarations: [AddIssueDialogComponent],
       providers: [
+        RestDataSource,
         ProjectService,
+        IssueService,
         { provide: MatDialogRef, useValue: {} },
         { provide: MAT_DIALOG_DATA, useValue: [] }
       ]

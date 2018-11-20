@@ -4,6 +4,7 @@ import {
   HttpTestingController
 } from '@angular/common/http/testing';
 import { ProjectService } from './project.service';
+import { RestDataSource } from '../datasource/rest.datasource';
 
 describe('ProjectService', () => {
   let injector: TestBed;
@@ -13,7 +14,7 @@ describe('ProjectService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [ProjectService]
+      providers: [ProjectService, RestDataSource]
     });
 
     injector = getTestBed();
@@ -27,29 +28,5 @@ describe('ProjectService', () => {
 
   it('should be created', () => {
     expect(service).toBeTruthy();
-  });
-
-  describe('#getProjects', () => {
-    it('should return all projects', () => {
-      const dummyProjects = [
-        {
-          title: 'Accessorials',
-          team: 'Pricing'
-        },
-        {
-          title: 'Trailer Prioritization',
-          team: 'Linehaul'
-        }
-      ];
-
-      service.getProjects().then((projects: any) => {
-        expect(projects.length).toBe(2);
-        expect(projects).toEqual(dummyProjects);
-      });
-
-      const req = httpMock.expectOne('http://localhost:3000/projects');
-      expect(req.request.method).toBe('GET');
-      req.flush(dummyProjects);
-    });
   });
 });
