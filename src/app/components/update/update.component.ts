@@ -69,6 +69,14 @@ export class UpdateComponent implements OnInit {
         .format('MM/DD/YYYY')
         .toString();
 
+      /**
+       * Notice that 'then' is called on the service method.
+       * This is because the service is returning a Promise,
+       * which results in an asynchronous callback function
+       * instead of returning the data directly.
+       * @see {@link IssueService}
+       * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise}
+       */
       this.issueService.updateIssue(updatedIssue).then(result => {
         console.log(result);
         this.router.navigate(['search']);

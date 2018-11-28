@@ -17,6 +17,7 @@ export class AddIssueDialogComponent {
   issue: Issue = new Issue();
   projects: Project[];
 
+  // Define the form group which is bound in the HTML
   addIssueForm = new FormGroup({
     title: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
@@ -35,6 +36,11 @@ export class AddIssueDialogComponent {
     });
   }
 
+  /**
+   * Called when the form is submitted. Takes the data from the form,
+   * creates a new Issue and sends it to the service, which then Posts
+   * it to the datasource.
+   */
   onSubmit() {
     const newIssue: Issue = new Issue();
     newIssue.title = this.title.value;
@@ -50,12 +56,23 @@ export class AddIssueDialogComponent {
     newIssue.dateCreated = currentDate;
     newIssue.dateLastUpdated = currentDate;
 
-    this.issueService.addIssue(newIssue).then(result => {
+    /**
+     * Notice that 'then' is called on the service methods.
+     * This is because the service is returning a Promise,
+     * which results in an asynchronous callback function
+     * instead of returning the data directly.
+     * @see {@link IssueService}
+     * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise}
+     */
+    this.issueService.addIssue(newIssue).then(() => {
       this.dialogRef.close();
       this.issueService.confirmIssueAdded();
     });
   }
 
+  /**
+   * Helper methods for getting the data from the form group.
+   */
   get title() {
     return this.addIssueForm.get('title');
   }
