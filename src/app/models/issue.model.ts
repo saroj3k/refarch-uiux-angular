@@ -1,16 +1,13 @@
 export class Issue {
-  title: string;
-  assignee: string;
-  priority: {
-    value: number;
-    text: string;
-  };
-  status: string;
-  description: string;
-  dateCreated: string;
-  dateLastUpdated: string;
-  closed: boolean;
-  dateClosed: string;
-  project: string;
-  id: number;
+  constructor(
+    public title?: string,
+    public assignee?: string,
+    public priority?: string,
+    public status?: string,
+    public description?: string,
+    public dateCreated?: string,
+    public dateLastUpdated?: string,
+    public project?: string,
+    public id?: string
+  ) {}
 }

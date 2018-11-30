@@ -5,6 +5,7 @@ import {
 } from '@angular/common/http/testing';
 import { IssueService } from './issue.service';
 import { RestDataSource } from '../datasource/rest.datasource';
+import { StaticDataSource } from '../datasource/static.datasource';
 
 describe('IssueService', () => {
   let injector: TestBed;
@@ -14,7 +15,7 @@ describe('IssueService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [IssueService, RestDataSource]
+      providers: [IssueService, RestDataSource, StaticDataSource]
     });
 
     injector = getTestBed();

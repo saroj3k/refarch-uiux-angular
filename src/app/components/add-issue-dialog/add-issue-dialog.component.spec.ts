@@ -9,6 +9,7 @@ import { ProjectService } from 'src/app/services/project.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RestDataSource } from 'src/app/datasource/rest.datasource';
 import { IssueService } from 'src/app/services/issue.service';
+import { StaticDataSource } from 'src/app/datasource/static.datasource';
 
 describe('AddIssueDialogComponent', () => {
   let component: AddIssueDialogComponent;
@@ -26,6 +27,7 @@ describe('AddIssueDialogComponent', () => {
       declarations: [AddIssueDialogComponent],
       providers: [
         RestDataSource,
+        StaticDataSource,
         ProjectService,
         IssueService,
         { provide: MatDialogRef, useValue: {} },

@@ -7,6 +7,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IssueService } from 'src/app/services/issue.service';
 import { RestDataSource } from 'src/app/datasource/rest.datasource';
+import { StaticDataSource } from 'src/app/datasource/static.datasource';
 
 describe('SearchComponent', () => {
   let component: SearchComponent;
@@ -22,7 +23,7 @@ describe('SearchComponent', () => {
         BrowserAnimationsModule
       ],
       declarations: [SearchComponent],
-      providers: [RestDataSource, IssueService]
+      providers: [RestDataSource, StaticDataSource, IssueService]
     }).compileComponents();
   }));
 

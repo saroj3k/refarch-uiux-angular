@@ -5,6 +5,7 @@ import {
 } from '@angular/common/http/testing';
 import { Issue } from '../models/issue.model';
 import { RestDataSource } from './rest.datasource';
+import { StaticDataSource } from './static.datasource';
 
 describe('RestDataSource', () => {
   let injector: TestBed;
@@ -14,7 +15,7 @@ describe('RestDataSource', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [RestDataSource]
+      providers: [RestDataSource, StaticDataSource]
     });
 
     injector = getTestBed();
@@ -106,7 +107,7 @@ describe('RestDataSource', () => {
       const updatedIssue = new Issue();
       updatedIssue.assignee = 'User';
       updatedIssue.title = 'Updated issue';
-      updatedIssue.id = 1;
+      updatedIssue.id = '1';
 
       dataSource.updateIssue(updatedIssue).subscribe(issue => {
         expect(issue).toEqual(updatedIssue);

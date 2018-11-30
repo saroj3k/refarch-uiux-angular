@@ -2,6 +2,7 @@ import { Component, Inject, AfterViewInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import * as moment from 'moment';
+import uuidv4 from 'uuid/v4';
 import { Project } from '../../models/project.model';
 import { Issue } from '../../models/issue.model';
 import { IssueService } from '../../services/issue.service';
@@ -49,6 +50,7 @@ export class AddIssueDialogComponent {
     newIssue.priority = this.priority.value;
     newIssue.assignee = '<Unassigned>';
     newIssue.status = 'New';
+    newIssue.id = uuidv4();
 
     const currentDate = moment()
       .format('MM/DD/YYYY')

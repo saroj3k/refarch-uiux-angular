@@ -42,6 +42,7 @@
     "od-internal-header": "0.0.19",
     "rxjs": "^6.3.2",
     "rxjs-compat": "^6.2.1",
+    "uuid": "^3.3.2",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

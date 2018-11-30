@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Issue } from '../models/issue.model';
 import { RestDataSource } from '../datasource/rest.datasource';
-import { Subject } from 'rxjs';
 // import { StaticDataSource } from '../datasource/static.datasource';
 
 /**
@@ -13,6 +13,7 @@ import { Subject } from 'rxjs';
 @Injectable()
 export class IssueService {
   constructor(private dataSource: RestDataSource) {}
+  // constructor(private dataSource: StaticDataSource) {}
 
   issue: Issue;
 
