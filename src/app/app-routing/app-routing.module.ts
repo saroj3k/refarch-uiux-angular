@@ -4,7 +4,7 @@ import { SearchComponent } from '../components/search/search.component';
 import { UpdateComponent } from '../components/update/update.component';
 import { SignupComponent } from '../components/auth/signup/signup.component';
 import { LoginComponent } from '../components/auth/login/login.component';
-import { AuthGuard } from '../components/auth/auth-guard.service';
+import { AuthGuard } from '../services/auth-guard.service';
 
 /**
  * Define all available routes in the application.

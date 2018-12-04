@@ -5,7 +5,7 @@ import * as _ from 'lodash';
 import * as moment from 'moment';
 import { Issue } from '../../models/issue.model';
 import { IssueService } from '../../services/issue.service';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-update',

@@ -8,7 +8,7 @@ import {
 } from '@angular/material';
 import { AddIssueDialogComponent } from '../add-issue-dialog/add-issue-dialog.component';
 import { Issue } from '../../models/issue.model';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { IssueService } from '../../services/issue.service';
 
 @Component({

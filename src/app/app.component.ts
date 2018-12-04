@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HeaderService, Page } from 'od-internal-header';
-import { AuthService } from './components/auth/auth.service';
+import { AuthService } from './services/auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
