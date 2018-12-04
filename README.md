@@ -2,6 +2,35 @@
 
 An Issue Tracking app that demonstrates basic Angular project architecture and concepts.
 
+- [IssueTracker](#issuetracker)
+  - [Setup](#setup)
+  - [Project Structure](#project-structure)
+    - [/src/app breakdown](#srcapp-breakdown)
+      - [App-routing](#app-routing)
+      - [Components](#components)
+      - [Datasource](#datasource)
+      - [Http-interceptors](#http-interceptors)
+      - [Models](#models)
+      - [Services](#services)
+      - [Shared](#shared)
+  - [JSON server](#json-server)
+  - [Authentication server](#authentication-server)
+  - [Development server](#development-server)
+  - [Code scaffolding](#code-scaffolding)
+  - [Build](#build)
+  - [Running unit tests](#running-unit-tests)
+  - [Running end-to-end tests](#running-end-to-end-tests)
+  - [Good practices](#good-practices)
+    - [Imports](#imports)
+    - [Modern syntax](#modern-syntax)
+      - [Declarations](#declarations)
+  - [Useful tools](#useful-tools)
+    - [VSCode + Extensions](#vscode--extensions)
+      - [Bracket Pair Colorizer](#bracket-pair-colorizer)
+      - [TSLint](#tslint)
+      - [Prettier - Code formatter](#prettier---code-formatter)
+  - [Further help](#further-help)
+
 ## Setup
 
 `$ git clone git@git.corp.odfl.com:refarch-uiux/angular.git`
@@ -145,6 +174,93 @@ More info on the [Jasmine](https://jasmine.github.io/2.0/introduction.html) test
 ## Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Good practices
+
+These are some tips to keep in mind when writing Angular apps.
+
+### Imports
+
+Import statements from third party modules e.g. `@angular/core` or `moment` should be placed first at the top of your file. Imports referencing modules or classes within your own code should be placed after the third party modules:
+
+```
+import { NgModule } from '@angular/core';
+...
+import { ComponentsModule } from './components/components.module';
+```
+
+It is also preferable to use relative paths instead of absolute paths for your local imports:
+
+`./components/components.module` is preferable to `src/app/components/components.module`
+
+### Modern syntax
+
+#### Declarations
+
+Modern JavaScript and TypeScript syntax uses `let` and `const` instead of `var`. There is no reason to use `var`, and in fact _TSLint_ will yell at you if you do.
+
+Using `let` and `const` declares local _block scope_ variables unlike `var`, which is _function scoped_. By limiting the number of places your variables can be mutated, you limit the chances for introducing unintended side effects.
+
+You should try to use `const` first, which declares a read-only named constant. If you determine the value needs to mutate you can use `let` instead.
+
+Note that `const` is not a true constant -- it's a _one-time assignment_. You can declare an Object once as a `const` but still set the properties. The object reference is constant but the object itself is not. Because the object reference is constant you cannot reassign it:
+
+```
+const person = {
+  name: "Dwayne Johnson"
+}
+
+// This works
+person.name = "The Rock";
+
+// This doesn't work
+person = {};
+```
+
+Otherwise, if you are using a variable where the value can mutate use `let`:
+
+```
+let sum = 0;
+sum = 2 + 2;
+
+for (let i = 0; i < 10; i++) {
+  ...
+}
+```
+
+Remember that these declarations are _block scoped_. A const defined at the top of your class will be accessible within any function in your class. However a variable defined inside a function will only be available inside that function or any blocks at a lower level inside that function. Try to ensure that your variables are only declared within the smallest scope that they are required!
+
+## Useful tools
+
+### VSCode + Extensions
+
+Although you can use any text editor to write JavaScript and Angular apps, VSCode is quickly becoming the standard for many developers. It is lightweight, flexible, and offers a wide array of extensions.
+
+Learn more - [VSCode](https://code.visualstudio.com/)
+
+#### Bracket Pair Colorizer
+
+This extension colorizes matching bracket pairs, making it easier to decipher where your code blocks begin and end.
+
+#### TSLint
+
+This provides linting for your TypeScript code. Since Angular requires the use of TS, this extension provides critical feedback on the quality of your TS code -- helping to avoid pitfalls and ease the learning curve.
+
+#### Prettier - Code formatter
+
+This will provide a solid baseline level of formatting for your code. The benefit of Prettier over other formatters is that it's fairly intelligent in regards to in-line vs line-breaks -- making the code more compact where it can and more readable where necessary:
+
+```
+// This is compact but still readable
+const person = { name: 'John Wayne' };
+
+// This is broken for readability
+const person = {
+  name: 'John Wayne',
+  age: '72'
+  birthplace: 'Winterset, Iowa'
+};
+```
 
 ## Further help
 
