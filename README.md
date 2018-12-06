@@ -108,7 +108,7 @@ A component should not be considered a "page" in the sense of a traditional web 
 
 #### Datasource
 
-The datasource is one of the simplest parts of the application. It should only be concered with returning an [Observable](https://angular.io/guide/rx-library) representation of your data. Most often, this will be in the form of an HTTP request to your REST service.
+The datasource is one of the simplest parts of the application. It should only be concerned with returning an [Observable](https://angular.io/guide/rx-library) representation of your data. Most often, this will be in the form of an HTTP request to your REST service.
 
 We have provided examples of both a `REST` datasource and a `static` datasource. This demonstrates the benefit of using a `repository` pattern, where the Service layer calls a Datasource layer to make a request -- in contrast to the Angular.io examples where the Service layer makes HTTP requests directly. Although the initial setup is slightly greater, this extra layer allows you to easily swap the datasource your service calls without major changes.
 
@@ -157,7 +157,7 @@ Authentication in this app is mainly for demonstration purposes. The `server.js`
 
 In our example, the `auth.service` handles the logic for logging in, logging out, and checking if a user is authenticated. The `auth-guard.service` uses the `auth.service` to check if a user is authenticated. It uses that information to implement [CanActivate](https://angular.io/api/router/CanActivate), which determines what to do (i.e. the user is authenticated so routing continues, otherwise navigate to the login page).
 
-The `auth-guard.service` is dropped into the routing module, and the implemented `canActivate` method is passed to the routes you want protected as a parameter.
+The `auth-guard.service` is dropped into the routing module, and the implemented `canActivate` method is passed as a parameter to the routes you want protected.
 
 ## Development server
 
@@ -191,7 +191,7 @@ These are some (slightly opinionated) tips to keep in mind when writing Angular 
 
 ### JavaScript styling
 
-AirBnB has created one of the most comprehensive and popular style guides for general JavaScript. It's worth checking out to gain some insight.
+AirBnB has created one of the most comprehensive and popular style guides for general JavaScript. Not everything in the guide will be relevant to TypeScript, but it's worth checking out to gain some insight.
 
 See the guide [HERE](https://github.com/airbnb/javascript)
 
