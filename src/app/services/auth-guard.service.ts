@@ -8,6 +8,11 @@ import {
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 
+/**
+ * Handles when a user hits a protected route. If the user is authenticated
+ * then routing continues as normal. If the user is not authenticated it routes them
+ * to the login page.
+ */
 @Injectable({
   providedIn: 'root'
 })

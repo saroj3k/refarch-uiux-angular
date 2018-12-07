@@ -11,6 +11,9 @@ import { Issue } from '../../models/issue.model';
 import { AuthService } from '../../services/auth.service';
 import { IssueService } from '../../services/issue.service';
 
+/**
+ * The main results page of the application. Displays a data table of issues.
+ */
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -48,10 +51,10 @@ export class SearchComponent implements OnInit {
     this.issueService.issueAdded$.subscribe(() => {
       this.getIssues();
     });
-    if (this.authService.getrole() === 'admin') {
+    if (this.authService.getRole() === 'admin') {
       this.displayedColumns.push('updateAction', 'deleteAction');
     }
-    if (this.authService.getrole() === 'user') {
+    if (this.authService.getRole() === 'user') {
       this.displayedColumns.push('viewAction');
     }
   }

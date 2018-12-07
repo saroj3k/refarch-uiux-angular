@@ -48,6 +48,9 @@ export class UpdateComponent implements OnInit {
     });
   }
 
+  /**
+   * Submits an updated issue to the Issue service.
+   */
   onSubmit() {
     const updatedIssue = { ...this.currentIssue };
     updatedIssue.title = this.updateIssueForm.get('title').value;

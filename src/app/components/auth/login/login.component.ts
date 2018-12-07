@@ -19,6 +19,10 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  /**
+   * Submits the login form information to the auth service.
+   * @param form The login form to get the values from.
+   */
   onSubmit(form: NgForm) {
     const email = this.loginForm.get('email').value;
     const password = this.loginForm.get('password').value;

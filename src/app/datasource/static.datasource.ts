@@ -3,6 +3,10 @@ import { Observable, from } from 'rxjs';
 import { Project } from '../models/project.model';
 import { Issue } from '../models/issue.model';
 
+/**
+ * A datasource for static data. For demonstration purposes,
+ * this can be deployed to an Openshift cluster since it has no dependency on JSON server.
+ */
 @Injectable()
 export class StaticDataSource {
   private projects: Project[] = [

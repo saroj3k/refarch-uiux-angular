@@ -123,7 +123,7 @@ Interceptors serve two functions in this application:
 
 #### Models
 
-Models serve a similar role to domain entities in JSF. They simply define the objects that your app will be creating, reading, updating or deleting.
+Models are used for storing the data we're working with in our app. They are simple classes that define the properties of our data. Using models is preferable to plain objects since it will make it easier to find where data is being stored and accessed in our app.
 
 #### Services
 
@@ -153,9 +153,11 @@ All that is needed is a `db.json` file. More info can be found [HERE](https://gi
 
 ## Authentication server
 
-Authentication in this app is mainly for demonstration purposes. The `server.js` acts as a local authentication server that will be replaced in the future with a real service. However the concepts of Auth Guards, protected routes, and http-interceptors (for adding a JWT to a request header) are still relevant.
+Authentication in this app is mainly for demonstration purposes. In the future we will be likely be using a third party identity manager such as Keycloak or Red Hat Identity Manager. The authentication server in this app was based on this [GUIDE](https://www.techiediaries.com/fake-api-jwt-json-server/).
 
-In our example, the `auth.service` handles the logic for logging in, logging out, and checking if a user is authenticated. The `auth-guard.service` uses the `auth.service` to check if a user is authenticated. It uses that information to implement [CanActivate](https://angular.io/api/router/CanActivate), which determines what to do (i.e. the user is authenticated so routing continues, otherwise navigate to the login page).
+The `server.js` acts as a local Node.js backend server for handling authentication. Requests are posted to the authentication server, the email and password are verified in the database, and a JWT auth token is returned. Although the local server will be replaced in a production ready app the concepts of Auth Guards, protected routes, and http-interceptors (for adding a JWT to a request header) are still relevant.
+
+In our example, the `auth.service` handles the logic for logging in, logging out, and checking if a user is authenticated. Login requests are posted to the `/auth/login` route defined in the server. Logout is handled by clearing the JWT token. The `auth-guard.service` uses the `auth.service` to check if a user is authenticated. It uses that information to implement [CanActivate](https://angular.io/api/router/CanActivate), which determines what to do when routing to a protected route (i.e. the user is authenticated so routing continues, otherwise navigate to the login page).
 
 The `auth-guard.service` is dropped into the routing module, and the implemented `canActivate` method is passed as a parameter to the routes you want protected.
 
