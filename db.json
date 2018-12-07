@@ -1,0 +1,95 @@
+{
+  "projects": [
+    {
+      "title": "Accessorials",
+      "team": "Pricing"
+    },
+    {
+      "title": "Trailer Prioritization",
+      "team": "Linehaul"
+    },
+    {
+      "title": "Walkplan",
+      "team": "Linehaul"
+    }
+  ],
+  "issues": [
+    {
+      "title": "Modal not opening",
+      "assignee": "Brian",
+      "priority": "P0",
+      "status": "Accepted",
+      "description": "The modal won't open when the add issue button is clicked",
+      "dateCreated": "09/20/2018",
+      "dateLastUpdated": "10/26/2018",
+      "project": "Walk Plan",
+      "id": "0"
+    },
+    {
+      "title": "Not submitting",
+      "assignee": "Matt",
+      "priority": "P0",
+      "status": "Assigned",
+      "description": "Form when submit when searching",
+      "dateCreated": "09/20/2018",
+      "dateLastUpdated": "09/20/2018",
+      "project": "Trailer Prioritization",
+      "id": "1"
+    },
+    {
+      "title": "Hover color",
+      "assignee": "Travis",
+      "priority": "P4",
+      "status": "Assigned",
+      "description": "The hover color is incorrect when hovering on a row",
+      "dateCreated": "09/20/2018",
+      "dateLastUpdated": "09/20/2018",
+      "project": "Accessorials",
+      "id": "2"
+    },
+    {
+      "title": "Joyride broken",
+      "assignee": "Matt",
+      "priority": "P2",
+      "status": "Fixed",
+      "description": "Joyride won't start when opening from the help menu",
+      "dateCreated": "09/20/2018",
+      "dateLastUpdated": "09/12/2018",
+      "project": "Trailer Prioritization",
+      "id": "3"
+    },
+    {
+      "title": "Button spacing",
+      "assignee": "Travis",
+      "priority": "P2",
+      "status": "Fixed",
+      "description": "Not enough spacing between buttons on the form",
+      "dateCreated": "09/20/2018",
+      "dateLastUpdated": "09/15/2018",
+      "project": "Accessorials",
+      "id": "4"
+    },
+    {
+      "title": "Button spacing",
+      "assignee": "Travis",
+      "priority": "P2",
+      "status": "Duplicate",
+      "description": "Duplicate of previous button spacing issue",
+      "dateCreated": "09/20/2018",
+      "dateLastUpdated": "09/15/2018",
+      "project": "Accessorials",
+      "id": "4"
+    },
+    {
+      "title": "Pagination",
+      "assignee": "Travis",
+      "priority": "P1",
+      "status": "Assigned",
+      "description": "Table won't paginate properly",
+      "dateCreated": "09/20/2018",
+      "dateLastUpdated": "09/15/2018",
+      "project": "Accessorials",
+      "id": "4"
+    }
+  ]
+}
