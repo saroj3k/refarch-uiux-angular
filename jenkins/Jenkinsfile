@@ -1,0 +1,42 @@
+node('nodejs') {
+  stage ('checkout') {
+    checkout scm
+  }
+  /* dependent on od internal header packages that the github public wont have access to
+  stage ('install modules'){
+    sh '''
+      npm install --verbose -d 
+      npm install --save classlist.js
+    '''
+  }
+  */
+
+/*  try{
+    stage ('test') {
+      sh '''
+        ls -l /opt/google/chrome/chrome-sandbox
+        $(npm bin)/ng test --single-run --browsers Chrome_no_sandbox
+      '''
+    }
+  } finally {
+    junit "test-results.xml"
+  }
+  stage ('code quality'){
+    sh '$(npm bin)/ng lint'
+  }
+  */
+
+  /* the prod build fails as some of the permissions are wonky, so try with dev build
+      sh '$(npm bin)/ng build --prod --build-optimizer'
+  */
+  stage ('build') {
+    sh '$(npm bin)/ng build'
+  }
+  stage ('build image') {
+    sh '''
+      mkdir dist/nginx-cfg
+      cp nginx/status.conf dist/nginx-cfg
+      oc start-build refarch-uiux-angular-rhel --from-dir=dist --follow
+    '''
+  }
+}
