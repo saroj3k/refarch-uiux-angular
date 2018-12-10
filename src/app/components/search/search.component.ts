@@ -39,7 +39,7 @@ export class SearchComponent implements OnInit {
   constructor(
     public http: HttpClient,
     private dialog: MatDialog,
-    private authService: AuthService,
+    public authService: AuthService,
     private issueService: IssueService
   ) {
     /**
