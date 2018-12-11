@@ -36,8 +36,9 @@ node('nodejs') {
   */
   stage ('build image') {
     sh '''
-      mkdir dist/nginx-cfg
+      /* mkdir dist/nginx-cfg
       cp nginx/status.conf dist/nginx-cfg
+      */
       oc start-build refarch-uiux-angular-rhel --from-dir=dist --follow
     '''
   }
