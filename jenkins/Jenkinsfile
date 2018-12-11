@@ -28,10 +28,12 @@ node('nodejs') {
 
   /* the prod build fails as some of the permissions are wonky, so try with dev build
       sh '$(npm bin)/ng build --prod --build-optimizer'
-  */
+      commenting the block to use current dist folder
+
   stage ('build') {
     sh '$(npm bin)/ng build'
   }
+  */
   stage ('build image') {
     sh '''
       mkdir dist/nginx-cfg
