@@ -2,16 +2,18 @@ node('nodejs') {
   stage ('checkout') {
     checkout scm
   }
-  /* dependent on od internal header packages that the github public wont have access to
+  /* Set to OD internal registry */
   stage ('install modules'){
     sh '''
+      npm config set registry http://build-repo.corp.odfl.com:8081/artifactory/api/npm/js-repo/
       npm install --verbose -d 
       npm install --save classlist.js
     '''
   }
-  */
 
-/*  try{
+
+/*  Comment out the Test scripts
+try{
     stage ('test') {
       sh '''
         ls -l /opt/google/chrome/chrome-sandbox
@@ -24,21 +26,21 @@ node('nodejs') {
   stage ('code quality'){
     sh '$(npm bin)/ng lint'
   }
-  */
+*/
 
   /* the prod build fails as some of the permissions are wonky, so try with dev build
       sh '$(npm bin)/ng build --prod --build-optimizer'
-      commenting the block to use current dist folder
+      commenting the block to use current dist folder */
 
   stage ('build') {
-    sh '$(npm bin)/ng build'
+    sh '$(npm bin)/ng build --prod --build-optimizer'
   }
-  */
+
   stage ('build image') {
     sh '''
-      /* mkdir dist/nginx-cfg
+      mkdir dist/nginx-cfg
       cp nginx/status.conf dist/nginx-cfg
-      */
+      
       oc start-build refarch-uiux-angular-rhel --from-dir=dist --follow
     '''
   }
