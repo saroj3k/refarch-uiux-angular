@@ -1,4 +1,4 @@
-node('nodejs') {
+node('nodejs10') {
   stage ('checkout') {
     checkout scm
   }
