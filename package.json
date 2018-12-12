@@ -28,7 +28,7 @@
     "zone.js": "^0.8.14",
     "bootstrap": "4.0.0-alpha.4",
     "font-awesome": "4.7.0",
-     @angular/flex-layout": "^6.0.0-beta.15",
+    "@angular/flex-layout": "^6.0.0-beta.15",
     "@angular/material": "^5.2.5",
     "@types/lodash": "^4.14.117",
     "ag-grid": "^18.1.2",
