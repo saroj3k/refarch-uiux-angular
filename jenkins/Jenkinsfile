@@ -33,7 +33,7 @@ try{
       commenting the block to use current dist folder */
 
   stage ('build') {
-    sh '$(npm bin)/ng build --prod --build-optimizer'
+    sh '$(npm bin)/ng build --prod'
   }
 
   stage ('build image') {
